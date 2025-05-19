@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 
 void main() {
   runApp(PortfolioWebApp());
@@ -12,7 +13,7 @@ return MaterialApp.router(
 title: 'Abdelrahman | Flutter Developer',
 debugShowCheckedModeBanner: false,
 theme: ThemeData.dark(),
-
+routerConfig: AppRouter.router
 );
 }
 }
