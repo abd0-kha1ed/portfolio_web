@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 
-import 'package:flutter/material.dart';
-import 'package:portfolio_web/core/constants/app_colors.dart';
-
 class HomeWhatIDoSection extends StatelessWidget {
   const HomeWhatIDoSection({super.key});
 
@@ -21,7 +18,6 @@ class HomeWhatIDoSection extends StatelessWidget {
                   ? Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // النصوص على اليسار
                       Expanded(
                         flex: 2,
                         child: Column(
@@ -72,20 +68,19 @@ class HomeWhatIDoSection extends StatelessWidget {
                       ),
                       const SizedBox(width: 32),
 
-                      // الكروت على اليمين
                       Expanded(
                         flex: 3,
                         child: Wrap(
                           spacing: 24,
                           runSpacing: 24,
                           children: const [
-                            _ServiceCard(
+                            ServiceCard(
                               icon: Icons.flutter_dash,
                               title: 'Flutter Development',
                               description:
                                   'I build fast, responsive, and beautiful mobile & web apps using Flutter.',
                             ),
-                            _ServiceCard(
+                            ServiceCard(
                               icon: Icons.design_services,
                               title: 'UI/UX in Flutter',
                               description:
@@ -143,13 +138,13 @@ class HomeWhatIDoSection extends StatelessWidget {
                         spacing: 24,
                         runSpacing: 24,
                         children: const [
-                          _ServiceCard(
+                          ServiceCard(
                             icon: Icons.flutter_dash,
                             title: 'Flutter Development',
                             description:
                                 'I build fast, responsive, and beautiful mobile & web apps using Flutter.',
                           ),
-                          _ServiceCard(
+                          ServiceCard(
                             icon: Icons.design_services,
                             title: 'UI/UX in Flutter',
                             description:
@@ -165,12 +160,12 @@ class HomeWhatIDoSection extends StatelessWidget {
   }
 }
 
-class _ServiceCard extends StatelessWidget {
+class ServiceCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String description;
 
-  const _ServiceCard({
+  const ServiceCard({super.key, 
     required this.icon,
     required this.title,
     required this.description,

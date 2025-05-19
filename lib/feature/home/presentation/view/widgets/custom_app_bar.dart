@@ -22,27 +22,27 @@ class CustomAppBar extends StatelessWidget {
           const Text('Abdelrahman', style: AppTextStyles.name),
           Row(
             children: [
-              _NavItem(
+              NavItem(
                 title: 'Home',
                 isSelected: selectedItem == 'Home',
                 onTap: () => onNavItemClick('Home'),
               ),
-              _NavItem(
+              NavItem(
                 title: 'Projects',
                 isSelected: selectedItem == 'Projects',
                 onTap: () => onNavItemClick('Projects'),
               ),
-              _NavItem(
+              NavItem(
                 title: 'Snippets',
                 isSelected: selectedItem == 'Snippets',
                 onTap: () => onNavItemClick('Snippets'),
               ),
-              _NavItem(
+              NavItem(
                 title: 'Mentorship',
                 isSelected: selectedItem == 'Mentorship',
                 onTap: () => onNavItemClick('Mentorship'),
               ),
-              _NavItem(
+              NavItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',
                 onTap: () => onNavItemClick('Contact'),
@@ -55,12 +55,12 @@ class CustomAppBar extends StatelessWidget {
   }
 }
 
-class _NavItem extends StatelessWidget {
+class NavItem extends StatelessWidget {
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const _NavItem({
+  const NavItem({super.key, 
     required this.title,
     required this.onTap,
     required this.isSelected,
