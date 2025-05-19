@@ -4,6 +4,7 @@ import 'package:portfolio_web/feature/home/presentation/view/widgets/custom_app_
 import 'package:portfolio_web/feature/home/presentation/view/widgets/featured_projects_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_biography_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_hero_section.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/home_snippets_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_what_i_do_section.dart';
 
 class HomeView extends StatefulWidget {
@@ -50,7 +51,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A192F),
+      // backgroundColor: const Color(0xFF0A192F),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -68,11 +69,9 @@ class _HomeViewState extends State<HomeView> {
                 .fade(duration: 600.ms, delay: 400.ms)
                 .slideY(begin: 0.2),
             HomeFeaturedProjectSection(
-                  key: featuredKey, // سنضيفه لاحقًا للربط بالAppBar
-                )
-                .animate()
-                .fade(duration: 700.ms)
-                .moveX(begin: -0.2), // انيميشن مختلف (slide from left)
+              key: featuredKey, // سنضيفه لاحقًا للربط بالAppBar
+            ).animate().fade(duration: 700.ms).moveX(begin: -0.2),
+            HomeSnippetsSection(),
           ],
         ),
       ),

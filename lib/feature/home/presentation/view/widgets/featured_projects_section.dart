@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 
-class HomeFeaturedProjectSection extends StatelessWidget {
+class HomeFeaturedProjectSection extends StatefulWidget {
   const HomeFeaturedProjectSection({super.key});
+
+  @override
+  State<HomeFeaturedProjectSection> createState() =>
+      _HomeFeaturedProjectSectionState();
+}
+
+class _HomeFeaturedProjectSectionState
+    extends State<HomeFeaturedProjectSection> {
+  bool showMore = false;
+
+  void toggleShowMore() {
+    setState(() {
+      showMore = !showMore;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +37,7 @@ class HomeFeaturedProjectSection extends StatelessWidget {
           ),
           const SizedBox(height: 40),
 
-          // ✅ مشروع 1
+          // ✅ مشروعين افتراضيين
           const _ProjectCard(
             imagePath: 'assets/images/project1.png',
             type: 'Flutter App',
@@ -31,8 +46,6 @@ class HomeFeaturedProjectSection extends StatelessWidget {
                 'A productivity app built using Flutter that helps users manage their daily tasks with reminders and analytics.',
           ),
           const SizedBox(height: 32),
-
-          // ✅ مشروع 2
           const _ProjectCard(
             imagePath: 'assets/images/project2.png',
             type: 'Flutter Web',
@@ -40,21 +53,44 @@ class HomeFeaturedProjectSection extends StatelessWidget {
             description:
                 'A personal portfolio website built with Flutter Web, showcasing skills, projects, and contact info with responsive UI.',
           ),
+
           const SizedBox(height: 32),
 
-          // زر See More
+          // ✅ مشاريع إضافية تظهر عند الضغط
+          if (showMore) ...[
+            const _ProjectCard(
+              imagePath: 'assets/images/project3.png',
+              type: 'Flutter LMS',
+              title: 'Learning Platform',
+              description:
+                  'Flutter LMS built for students and teachers with clean architecture and state management.',
+            ),
+            const SizedBox(height: 32),
+            const _ProjectCard(
+              imagePath: 'assets/images/project4.png',
+              type: 'Flutter Attendance',
+              title: 'Attendance System',
+              description:
+                  'QR-based check-in system using Flutter, integrated with Firebase for real-time data sync.',
+            ),
+            const SizedBox(height: 32),
+          ],
+
+          // ✅ زر See More / See Less
           Align(
             alignment: Alignment.centerLeft,
             child: ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.menu),
-              label: const Text('See More'),
+              onPressed: toggleShowMore,
+              icon: Icon(showMore ? Icons.expand_less : Icons.expand_more),
+              label: Text(showMore ? 'See Less' : 'See More'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.background,
                 foregroundColor: AppColors.white,
                 side: const BorderSide(color: AppColors.secondaryText),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
               ),
             ),
           ),
@@ -129,7 +165,7 @@ class _ProjectCard extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
