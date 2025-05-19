@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/helpers/functions/url_launcher_function.dart';
 
 class HomeBiographySection extends StatelessWidget {
   const HomeBiographySection({super.key});
@@ -91,14 +93,13 @@ class HomeBiographySection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Row(
-                children: const [
-                  _SocialIcon(icon: Icons.email),
+                children:  [
+                  SocialIcon(icon: Icons.email),
                   SizedBox(width: 12),
-                  _SocialIcon(icon: Icons.facebook),
+                  SocialIcon(icon: FontAwesomeIcons.whatsapp, onPressed: () => openWhatsApp('+201007287335')),
                   SizedBox(width: 12),
-                  // _SocialIcon(icon: Icons.twitter),
-                  // SizedBox(width: 12),
-                  _SocialIcon(icon: Icons.code),
+                  SocialIcon(icon: FontAwesomeIcons.facebook, onPressed: () => lunchCustomUrl('https://www.facebook.com/abd.el.rhman.khaled.584963')),  
+                  SizedBox(width: 12),
                 ],
               ),
             ],
@@ -109,13 +110,17 @@ class HomeBiographySection extends StatelessWidget {
   }
 }
 
-class _SocialIcon extends StatelessWidget {
+class SocialIcon extends StatelessWidget {
   final IconData icon;
+  final void Function()? onPressed;
 
-  const _SocialIcon({required this.icon});
+  const SocialIcon({super.key, required this.icon, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Icon(icon, color: AppColors.accent, size: 24);
+    return IconButton(
+      onPressed: onPressed,
+      icon: Icon(icon, color: AppColors.accent, size: 24),
+    );
   }
 }

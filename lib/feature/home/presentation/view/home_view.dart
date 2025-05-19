@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/custom_app_bar.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/featured_projects_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_biography_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_hero_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_what_i_do_section.dart';
@@ -16,6 +17,7 @@ class _HomeViewState extends State<HomeView> {
   final heroKey = GlobalKey();
   final bioKey = GlobalKey();
   final whatIDoKey = GlobalKey();
+  final featuredKey = GlobalKey();
 
   String selectedItem = 'Home'; // يبدأ بـ Home تلقائيًا
 
@@ -23,9 +25,23 @@ class _HomeViewState extends State<HomeView> {
     setState(() => selectedItem = section);
 
     if (section == 'Home') {
-      Scrollable.ensureVisible(heroKey.currentContext!,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOut);
+      Scrollable.ensureVisible(
+        heroKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } else if (section == 'Projects') {
+      Scrollable.ensureVisible(
+        bioKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } else if (section == 'Snippets') {
+      Scrollable.ensureVisible(
+        whatIDoKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
     }
 
     // Add other sections here later...
@@ -38,15 +54,11 @@ class _HomeViewState extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppBar(
-              onNavItemClick: scrollTo,
-              selectedItem: selectedItem,
-            ),
+            CustomAppBar(onNavItemClick: scrollTo, selectedItem: selectedItem),
             const SizedBox(height: 20),
-            HomeHeroSection(key: heroKey)
-                .animate()
-                .fade(duration: 600.ms)
-                .slideY(begin: 0.2),
+            HomeHeroSection(
+              key: heroKey,
+            ).animate().fade(duration: 600.ms).slideY(begin: 0.2),
             HomeBiographySection(key: bioKey)
                 .animate()
                 .fade(duration: 600.ms, delay: 200.ms)
@@ -55,10 +67,15 @@ class _HomeViewState extends State<HomeView> {
                 .animate()
                 .fade(duration: 600.ms, delay: 400.ms)
                 .slideY(begin: 0.2),
+            HomeFeaturedProjectSection(
+                  key: featuredKey, // سنضيفه لاحقًا للربط بالAppBar
+                )
+                .animate()
+                .fade(duration: 700.ms)
+                .moveX(begin: -0.2), // انيميشن مختلف (slide from left)
           ],
         ),
       ),
     );
   }
 }
-

@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text('Abdelrahman', style: AppTextStyles.name),
+          const Text('Abd El-Rhman', style: AppTextStyles.name),
           Row(
             children: [
               NavItem(

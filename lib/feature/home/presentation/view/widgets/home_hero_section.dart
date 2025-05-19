@@ -15,14 +15,11 @@ class HomeHeroSection extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 900),
           child: GradientText(
-            'Hi I\'m Abdelrahman, a special human\n'
+            'Hi I\'m Abd El-Rhman, a special human\n'
             'with some ability to love learning\n'
             'and working on teamwork.',
             gradient: const LinearGradient(
-              colors: [
-                Color(0xFF64FFDA),
-                Color(0xFF00B5FF),
-              ],
+              colors: [Color(0xFF64FFDA), Color(0xFF00B5FF)],
             ),
             style: const TextStyle(
               fontSize: 40,
