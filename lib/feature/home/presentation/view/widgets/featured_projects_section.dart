@@ -20,8 +20,6 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
   late Animation<Offset> _slideAnimation;
   late Animation<double> _scaleAnimation;
 
-  
-
   @override
   void initState() {
     super.initState();
@@ -95,7 +93,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                   ),
                 ];
                 List<ProjectModel> displayedProjects =
-                     allProjects.take(2).toList();
+                    allProjects.take(2).toList();
 
                 List<Widget> projectCards =
                     displayedProjects
@@ -149,9 +147,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                       alignment: Alignment.centerLeft,
                       child: ElevatedButton.icon(
                         onPressed: () {},
-                        icon: Icon(
-                          Icons.expand_more,
-                        ),
+                        icon: Icon(Icons.menu),
                         label: Text('See More'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.background,
@@ -182,4 +178,3 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
     super.dispose();
   }
 }
-
