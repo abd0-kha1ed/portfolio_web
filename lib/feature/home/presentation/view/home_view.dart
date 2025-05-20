@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/featured_projects_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_biography_section.dart';
@@ -19,6 +20,7 @@ class _HomeViewState extends State<HomeView> {
   final bioKey = GlobalKey();
   final whatIDoKey = GlobalKey();
   final featuredKey = GlobalKey();
+  final snippetsKey = GlobalKey();
 
   String selectedItem = 'Home'; // يبدأ بـ Home تلقائيًا
 
@@ -33,13 +35,13 @@ class _HomeViewState extends State<HomeView> {
       );
     } else if (section == 'Projects') {
       Scrollable.ensureVisible(
-        bioKey.currentContext!,
+        featuredKey.currentContext!,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
     } else if (section == 'Snippets') {
       Scrollable.ensureVisible(
-        whatIDoKey.currentContext!,
+        snippetsKey.currentContext!,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
@@ -51,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color(0xFF0A192F),
+      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -68,10 +70,8 @@ class _HomeViewState extends State<HomeView> {
                 .animate()
                 .fade(duration: 600.ms, delay: 400.ms)
                 .slideY(begin: 0.2),
-            HomeFeaturedProjectSection(
-              key: featuredKey, // سنضيفه لاحقًا للربط بالAppBar
-            ).animate().fade(duration: 700.ms).moveX(begin: -0.2),
-            HomeSnippetsSection(),
+            HomeFeaturedProjectSection(key: featuredKey),
+            HomeSnippetsSection(key: snippetsKey),
           ],
         ),
       ),
