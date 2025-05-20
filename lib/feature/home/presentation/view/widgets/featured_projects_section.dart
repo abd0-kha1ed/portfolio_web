@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/feature/home/data/models/project_model.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/project_card.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeFeaturedProjectSection extends StatefulWidget {
@@ -12,18 +14,13 @@ class HomeFeaturedProjectSection extends StatefulWidget {
 
 class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
     with TickerProviderStateMixin {
-  bool showMore = false;
   bool _isVisible = false;
 
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
   late Animation<double> _scaleAnimation;
 
-  void toggleShowMore() {
-    setState(() {
-      showMore = !showMore;
-    });
-  }
+  
 
   @override
   void initState() {
@@ -67,38 +64,50 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
               builder: (context, constraints) {
                 final isWide = constraints.maxWidth > 850;
 
-                List<Widget> projectCards = [
-                  const _ProjectCard(
+                const List<ProjectModel> allProjects = [
+                  ProjectModel(
                     imagePath: 'assets/images/project1.png',
                     type: 'Flutter App',
                     title: 'Task Manager',
                     description:
                         'A productivity app built using Flutter that helps users manage their daily tasks with reminders and analytics.',
                   ),
-                  const _ProjectCard(
+                  ProjectModel(
                     imagePath: 'assets/images/project2.png',
                     type: 'Flutter Web',
                     title: 'Portfolio Website',
                     description:
                         'A personal portfolio website built with Flutter Web, showcasing skills, projects, and contact info with responsive UI.',
                   ),
-                  if (showMore)
-                    const _ProjectCard(
-                      imagePath: 'assets/images/project3.png',
-                      type: 'Flutter LMS',
-                      title: 'Learning Platform',
-                      description:
-                          'Flutter LMS built for students and teachers with clean architecture and state management.',
-                    ),
-                  if (showMore)
-                    const _ProjectCard(
-                      imagePath: 'assets/images/project4.png',
-                      type: 'Flutter Attendance',
-                      title: 'Attendance System',
-                      description:
-                          'QR-based check-in system using Flutter, integrated with Firebase for real-time data sync.',
-                    ),
+                  ProjectModel(
+                    imagePath: 'assets/images/project3.png',
+                    type: 'Flutter LMS',
+                    title: 'Learning Platform',
+                    description:
+                        'Flutter LMS built for students and teachers with clean architecture and state management.',
+                  ),
+                  ProjectModel(
+                    imagePath: 'assets/images/project4.png',
+                    type: 'Flutter Attendance',
+                    title: 'Attendance System',
+                    description:
+                        'QR-based check-in system using Flutter, integrated with Firebase for real-time data sync.',
+                  ),
                 ];
+                List<ProjectModel> displayedProjects =
+                     allProjects.take(2).toList();
+
+                List<Widget> projectCards =
+                    displayedProjects
+                        .map(
+                          (project) => ProjectCard(
+                            imagePath: project.imagePath,
+                            type: project.type,
+                            title: project.title,
+                            description: project.description,
+                          ),
+                        )
+                        .toList();
 
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,11 +148,11 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                     Align(
                       alignment: Alignment.centerLeft,
                       child: ElevatedButton.icon(
-                        onPressed: toggleShowMore,
+                        onPressed: () {},
                         icon: Icon(
-                          showMore ? Icons.expand_less : Icons.expand_more,
+                          Icons.expand_more,
                         ),
-                        label: Text(showMore ? 'See Less' : 'See More'),
+                        label: Text('See More'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.background,
                           foregroundColor: AppColors.white,
@@ -174,120 +183,3 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
   }
 }
 
-class _ProjectCard extends StatelessWidget {
-  final String imagePath;
-  final String type;
-  final String title;
-  final String description;
-
-  const _ProjectCard({
-    required this.imagePath,
-    required this.type,
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isWide = screenWidth > 600;
-
-    if (isWide) {
-      // layout for wide screens (Row)
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 350,
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: AppColors.backgroundCards,
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(width: 32),
-          Expanded(
-            child: _ProjectDetails(
-              type: type,
-              title: title,
-              description: description,
-            ),
-          ),
-        ],
-      );
-    } else {
-      // layout for small screens (Column)
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: double.infinity,
-            height: 180,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: const Color(0xFF1C1F2A),
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-          _ProjectDetails(type: type, title: title, description: description),
-        ],
-      );
-    }
-  }
-}
-
-class _ProjectDetails extends StatelessWidget {
-  final String type;
-  final String title;
-  final String description;
-
-  const _ProjectDetails({
-    required this.type,
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          type,
-          style: const TextStyle(
-            color: AppColors.secondaryText,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          title,
-          style: const TextStyle(
-            color: AppColors.white,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          description,
-          style: const TextStyle(
-            color: AppColors.secondaryText,
-            fontSize: 15,
-            height: 1.5,
-          ),
-        ),
-      ],
-    );
-  }
-}
