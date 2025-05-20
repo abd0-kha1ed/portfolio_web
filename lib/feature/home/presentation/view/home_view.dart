@@ -53,11 +53,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
             CustomAppBar(onNavItemClick: scrollTo, selectedItem: selectedItem),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 150),
+              child: const Divider(color: AppColors.normalText),
+            ),
             const SizedBox(height: 20),
             HomeHeroSection(
               key: heroKey,

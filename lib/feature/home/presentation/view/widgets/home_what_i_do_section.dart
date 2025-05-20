@@ -46,7 +46,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'Flutter',
-                                    style: TextStyle(color: Colors.greenAccent),
+                                    style: TextStyle(color: AppColors.accent),
                                   ),
                                   TextSpan(
                                     text:
@@ -54,7 +54,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'MOFON',
-                                    style: TextStyle(color: AppColors.accent),
+                                    style: TextStyle(color: AppColors.blueDark),
                                   ),
                                   TextSpan(
                                     text:
@@ -165,7 +165,8 @@ class ServiceCard extends StatelessWidget {
   final String title;
   final String description;
 
-  const ServiceCard({super.key, 
+  const ServiceCard({
+    super.key,
     required this.icon,
     required this.title,
     required this.description,
@@ -177,7 +178,7 @@ class ServiceCard extends StatelessWidget {
       width: 230,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0xFF1C1F2A),
+        color: AppColors.backgroundCards,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -185,7 +186,7 @@ class ServiceCard extends StatelessWidget {
           CircleAvatar(
             radius: 24,
             backgroundColor: AppColors.background,
-            child: Icon(icon, color: AppColors.accent),
+            child: Icon(icon, color: AppColors.white),
           ),
           const SizedBox(height: 16),
           Text(
