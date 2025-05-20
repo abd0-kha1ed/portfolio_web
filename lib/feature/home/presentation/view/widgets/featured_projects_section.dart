@@ -199,11 +199,11 @@ class _ProjectCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 300,
-            height: 180,
+            width: 350,
+            height: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: const Color(0xFF1C1F2A),
+              color: AppColors.backgroundCards,
               image: DecorationImage(
                 image: AssetImage(imagePath),
                 fit: BoxFit.cover,
@@ -244,6 +244,7 @@ class _ProjectCard extends StatelessWidget {
     }
   }
 }
+
 class _ProjectDetails extends StatelessWidget {
   final String type;
   final String title;
@@ -290,4 +291,3 @@ class _ProjectDetails extends StatelessWidget {
     );
   }
 }
-

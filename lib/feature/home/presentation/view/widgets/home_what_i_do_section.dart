@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/service_card.dart';
 
 class HomeWhatIDoSection extends StatelessWidget {
   const HomeWhatIDoSection({super.key});
@@ -11,7 +13,6 @@ class HomeWhatIDoSection extends StatelessWidget {
         bool isWide = constraints.maxWidth > 850;
 
         return Container(
-          color: AppColors.background,
           padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 60),
           child:
               isWide
@@ -73,18 +74,30 @@ class HomeWhatIDoSection extends StatelessWidget {
                         child: Wrap(
                           spacing: 24,
                           runSpacing: 24,
-                          children: const [
-                            ServiceCard(
+                          children: [
+                            const ServiceCard(
                               icon: Icons.flutter_dash,
                               title: 'Flutter Development',
                               description:
                                   'I build fast, responsive, and beautiful mobile & web apps using Flutter.',
                             ),
-                            ServiceCard(
+                            const ServiceCard(
                               icon: Icons.design_services,
                               title: 'UI/UX in Flutter',
                               description:
                                   'I focus on creating smooth and user-friendly designs with Flutter best practices.',
+                            ),
+                            SizedBox(width: 50),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 80),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  FontAwesomeIcons.arrowRight,
+                                  size: 32,
+                                  color: AppColors.white,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -160,55 +173,3 @@ class HomeWhatIDoSection extends StatelessWidget {
   }
 }
 
-class ServiceCard extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String description;
-
-  const ServiceCard({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 230,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundCards,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundColor: AppColors.background,
-            child: Icon(icon, color: AppColors.white),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            style: const TextStyle(
-              color: AppColors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            description,
-            style: const TextStyle(
-              color: AppColors.secondaryText,
-              fontSize: 14,
-              height: 1.5,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
-}
