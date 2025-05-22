@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/aii_projects_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/routing/app_router.dart';
+import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/feature/home/data/models/project_model.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/project_card.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -91,8 +92,12 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                         color: AppColors.white,
                       ),
                     ),
-                    const SizedBox(height: 40),
 
+                    const SizedBox(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24),
+                      child: Image.asset(Assets.imagesNew),
+                    ),
                     isWide
                         ? Wrap(
                           spacing: 32,
