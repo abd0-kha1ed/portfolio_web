@@ -93,6 +93,24 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                     ),
                   ],
                 ),
+                const SizedBox(height: 16),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: Icon(Icons.menu),
+                    label: Text('See More'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.background,
+                      foregroundColor: AppColors.white,
+                      side: const BorderSide(color: AppColors.secondaryText),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -127,7 +145,7 @@ class _SnippetCard extends StatelessWidget {
       width: 320,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF1C1F2A),
+        color: AppColors.backgroundCards,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
