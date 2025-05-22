@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 
-class CustomAppBar extends StatelessWidget {
-  final void Function(String section) onNavItemClick;
+class CustomHeader extends StatelessWidget {
+const CustomHeader({ super.key, required this.onNavItemClick, required this.selectedItem });
+final void Function(String section) onNavItemClick;
   final String selectedItem;
-
-  const CustomAppBar({
-    super.key,
-    required this.onNavItemClick,
-    required this.selectedItem,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
+@override
+Widget build(BuildContext context) {
+return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,27 +19,22 @@ class CustomAppBar extends StatelessWidget {
           ),
           Row(
             children: [
-              NavItem(
-                title: 'Home',
-                isSelected: selectedItem == 'Home',
-                onTap: () => onNavItemClick('Home'),
+              SwitchItem(
+                title: 'What I Do',
+                isSelected: selectedItem == 'What I Do',
+                onTap: () => onNavItemClick('What I Do'),
               ),
-              NavItem(
-                title: 'Projects',
-                isSelected: selectedItem == 'Projects',
-                onTap: () => onNavItemClick('Projects'),
-              ),
-              NavItem(
-                title: 'Snippets',
-                isSelected: selectedItem == 'Snippets',
-                onTap: () => onNavItemClick('Snippets'),
-              ),
-              NavItem(
+              SwitchItem(
                 title: 'Mentorship',
                 isSelected: selectedItem == 'Mentorship',
                 onTap: () => onNavItemClick('Mentorship'),
               ),
-              NavItem(
+              SwitchItem(
+                title: 'Portfolio',
+                isSelected: selectedItem == 'Portfolio',
+                onTap: () => onNavItemClick('Portfolio'),
+              ),
+              SwitchItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',
                 onTap: () => onNavItemClick('Contact'),
@@ -55,15 +44,15 @@ class CustomAppBar extends StatelessWidget {
         ],
       ),
     );
-  }
+}
 }
 
-class NavItem extends StatelessWidget {
+class SwitchItem extends StatelessWidget {
   final String title;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const NavItem({
+  const SwitchItem({
     super.key,
     required this.title,
     required this.onTap,
