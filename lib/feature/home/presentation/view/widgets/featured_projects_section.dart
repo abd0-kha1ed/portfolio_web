@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/constants/aii_projects_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/feature/home/data/models/project_model.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/project_card.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -56,42 +59,12 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: Container(
-            color: AppColors.background,
+            // color: AppColors.background,
             padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 60),
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final isWide = constraints.maxWidth > 850;
 
-                const List<ProjectModel> allProjects = [
-                  ProjectModel(
-                    imagePath: 'assets/images/project1.png',
-                    type: 'Flutter App',
-                    title: 'Task Manager',
-                    description:
-                        'A productivity app built using Flutter that helps users manage their daily tasks with reminders and analytics.',
-                  ),
-                  ProjectModel(
-                    imagePath: 'assets/images/project2.png',
-                    type: 'Flutter Web',
-                    title: 'Portfolio Website',
-                    description:
-                        'A personal portfolio website built with Flutter Web, showcasing skills, projects, and contact info with responsive UI.',
-                  ),
-                  ProjectModel(
-                    imagePath: 'assets/images/project3.png',
-                    type: 'Flutter LMS',
-                    title: 'Learning Platform',
-                    description:
-                        'Flutter LMS built for students and teachers with clean architecture and state management.',
-                  ),
-                  ProjectModel(
-                    imagePath: 'assets/images/project4.png',
-                    type: 'Flutter Attendance',
-                    title: 'Attendance System',
-                    description:
-                        'QR-based check-in system using Flutter, integrated with Firebase for real-time data sync.',
-                  ),
-                ];
                 List<ProjectModel> displayedProjects =
                     allProjects.take(2).toList();
 
@@ -146,7 +119,9 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                     Align(
                       alignment: Alignment.centerLeft,
                       child: ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          GoRouter.of(context).push(AppRouter.kProjects);
+                        },
                         icon: Icon(Icons.menu),
                         label: Text('See More'),
                         style: ElevatedButton.styleFrom(

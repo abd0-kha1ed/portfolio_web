@@ -7,6 +7,20 @@ class AppTextStyles {
     color: AppColors.accent,
     letterSpacing: 1.2,
   );
+  static const TextStyle bold56 = TextStyle(
+    color: Colors.white,
+    fontSize: 56,
+    fontWeight: FontWeight.w700,
+    height: 1.29,
+    letterSpacing: 1,
+  );
+  static const TextStyle bold24 = TextStyle(
+    color: Colors.white,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    height: 1.29,
+    letterSpacing: 1,
+  );
 
   static const TextStyle name = TextStyle(
     fontSize: 48,

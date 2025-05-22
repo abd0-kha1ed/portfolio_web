@@ -3,20 +3,21 @@ import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 
 class CustomHeader extends StatelessWidget {
-const CustomHeader({ super.key, required this.onNavItemClick, required this.selectedItem });
-final void Function(String section) onNavItemClick;
+  const CustomHeader({
+    super.key,
+    required this.onNavItemClick,
+    required this.selectedItem,
+  });
+  final void Function(String section) onNavItemClick;
   final String selectedItem;
-@override
-Widget build(BuildContext context) {
-return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 24),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Abd El-Rhman',
-            style: AppTextStyles.name.copyWith(color: AppColors.white),
-          ),
+          Text('Abd El-Rhman', style: AppTextStyles.bold24),
           Row(
             children: [
               SwitchItem(
@@ -44,7 +45,7 @@ return Padding(
         ],
       ),
     );
-}
+  }
 }
 
 class SwitchItem extends StatelessWidget {
