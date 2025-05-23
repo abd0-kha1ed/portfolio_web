@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/all_snippets_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/snippets/data/model/snippet_model.dart';
 import 'package:portfolio_web/feature/snippets/presentation/view/widgets/responsive_snippet_grid.dart';
@@ -33,10 +34,11 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
   void _onSearchChanged() {
     final query = _searchController.text.toLowerCase();
     setState(() {
-      filteredSnippets = allSnippets.where((snippet) {
-        return snippet.title.toLowerCase().contains(query) ||
-            snippet.description.toLowerCase().contains(query);
-      }).toList();
+      filteredSnippets =
+          allSnippets.where((snippet) {
+            return snippet.title.toLowerCase().contains(query) ||
+                snippet.description.toLowerCase().contains(query);
+          }).toList();
     });
   }
 
@@ -66,10 +68,10 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
             const SizedBox(height: 40),
             ResponsiveSnippetGrid(snippets: filteredSnippets),
             const SizedBox(height: 80),
+            const CustomFooter(),
           ],
         ),
       ),
     );
   }
 }
-

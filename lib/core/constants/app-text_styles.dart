@@ -35,6 +35,12 @@ class AppTextStyles {
     height: 1.29,
     letterSpacing: 1,
   );
+  static const TextStyle semibold14 = TextStyle(
+    color: Color(0xFFF4F4F4),
+    fontSize: 14,
+    fontFamily: 'IBM Plex Sans',
+    fontWeight: FontWeight.w600,
+  );
 
   static const TextStyle name = TextStyle(
     fontSize: 48,
