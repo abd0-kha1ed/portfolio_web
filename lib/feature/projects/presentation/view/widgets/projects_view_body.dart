@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/projects/presentation/view/widgets/all_projects_layout.dart';
 
@@ -68,6 +69,7 @@ class _ProjectsViewBodyState extends State<ProjectsViewBody> {
             const SizedBox(height: 82),
             AllProjectsLayout(),
             const SizedBox(height: 82),
+            const CustomFooter(),
           ],
         ),
       ),

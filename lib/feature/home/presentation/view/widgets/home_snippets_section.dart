@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/constants/all_snippets_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/routing/app_router.dart';
+import 'package:portfolio_web/feature/snippets/presentation/view/widgets/snippet_code_dialog.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeSnippetsSection extends StatefulWidget {
@@ -62,39 +64,49 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                   ),
                 ),
                 const SizedBox(height: 32),
-                Wrap(
-                  spacing: 24,
-                  runSpacing: 24,
-                  children: const [
-                    SnippetCard(
-                      title: 'Flutter Auth Starter',
-                      description:
-                          'Basic login/register flow with Cubit and Firebase.',
-                      stars: 12,
-                      icons: [Icons.flutter_dash, Icons.lock],
-                    ),
-                    SnippetCard(
-                      title: 'Clean Architecture Template',
-                      description:
-                          'Base Flutter project with layered clean structure.',
-                      stars: 8,
-                      icons: [Icons.architecture, Icons.layers],
-                    ),
-                    SnippetCard(
-                      title: 'Adaptive Layout Scaffold',
-                      description:
-                          'Responsive layout using MediaQuery & LayoutBuilder.',
-                      stars: 6,
-                      icons: [Icons.devices, Icons.view_compact],
-                    ),
-                    SnippetCard(
-                      title: 'Cubit HTTP Example',
-                      description: 'API integration using Dio + Cubit pattern.',
-                      stars: 10,
-                      icons: [Icons.api, Icons.send],
-                    ),
-                  ],
-                ),
+                LayoutBuilder(
+  builder: (context, constraints) {
+    final width = constraints.maxWidth;
+    final crossAxisCount = width > 1100
+        ? 4
+        : width > 800
+            ? 2
+            : 1;
+
+    return GridView.count(
+      crossAxisCount: crossAxisCount,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      crossAxisSpacing: 24,
+      mainAxisSpacing: 24,
+      childAspectRatio: 1.4,
+      children: allSnippets
+          .take(4) 
+          .map(
+            (snippet) => GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => SnippetCodeDialog(
+                    title: snippet.title,
+                    code: snippet.code,
+                  ),
+                );
+              },
+              child: SnippetCard(
+                title: snippet.title,
+                description: snippet.description,
+                stars: snippet.stars,
+                icons: snippet.icons,
+              ),
+            ),
+          )
+          .toList(),
+    );
+  },
+),
+
+
                 const SizedBox(height: 16),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -136,7 +148,8 @@ class SnippetCard extends StatelessWidget {
   final int stars;
   final List<IconData> icons;
 
-  const SnippetCard({super.key, 
+  const SnippetCard({
+    super.key,
     required this.title,
     required this.description,
     required this.stars,
@@ -145,55 +158,56 @@ class SnippetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 320,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundCards,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: AppColors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            description,
-            style: const TextStyle(
-              color: AppColors.secondaryText,
-              fontSize: 14,
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              ...icons.map(
-                (icon) => Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Icon(icon, color: AppColors.accent, size: 20),
-                ),
+    return IntrinsicHeight(
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: AppColors.backgroundCards,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: AppColors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
-              const Spacer(),
-              const Icon(Icons.star, color: Colors.amber, size: 18),
-              const SizedBox(width: 4),
-              Text(
-                '$stars Stars',
-                style: const TextStyle(
-                  color: AppColors.secondaryText,
-                  fontSize: 14,
-                ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              description,
+              style: const TextStyle(
+                color: AppColors.secondaryText,
+                fontSize: 14,
+                height: 1.5,
               ),
-            ],
-          ),
-        ],
+            ),
+            const Spacer(), // ✅ الآن سيعمل بشكل صحيح
+            Row(
+              children: [
+                ...icons.map(
+                  (icon) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Icon(icon, color: AppColors.accent, size: 20),
+                  ),
+                ),
+                const Spacer(),
+                const Icon(Icons.star, color: Colors.amber, size: 18),
+                const SizedBox(width: 4),
+                Text(
+                  '$stars Stars',
+                  style: const TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
