@@ -17,6 +17,7 @@ class CodeSnippetsViewBody extends StatefulWidget {
 
 class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
   final TextEditingController _searchController = TextEditingController();
+  String selectedItem = 'Snippets';
   List<SnippetModel> filteredSnippets = allSnippets;
 
   @override
@@ -42,6 +43,18 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
     });
   }
 
+  void onNavItemClick(String section) {
+    setState(() => selectedItem = section);
+
+    // if (section == 'Snippets') {
+    //   Scrollable.ensureVisible(
+    //     context,
+    //     duration: const Duration(milliseconds: 500),
+    //     curve: Curves.easeInOut,
+    //   );
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -51,12 +64,8 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomHeader(
-              selectedItem: 'Snippet',
-              onNavItemClick: (section) {
-                // if (section == 'Snippet') {
-                //   GoRouter.of(context).push(AppRouter.kSnippets);
-                // }
-              },
+              onNavItemClick: onNavItemClick,
+              selectedItem: selectedItem,
             ),
             const Divider(color: AppColors.normalText),
             const SizedBox(height: 78),

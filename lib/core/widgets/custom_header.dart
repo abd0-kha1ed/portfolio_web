@@ -25,20 +25,16 @@ class CustomHeader extends StatelessWidget {
                 isSelected: selectedItem == 'What I Do',
                 onTap: () => onNavItemClick('What I Do'),
               ),
-              SwitchItem(
-                title: 'Mentorship',
-                isSelected: selectedItem == 'Mentorship',
-                onTap: () => onNavItemClick('Mentorship'),
-              ),
+
               SwitchItem(
                 title: 'Portfolio',
                 isSelected: selectedItem == 'Portfolio',
                 onTap: () => onNavItemClick('Portfolio'),
               ),
               SwitchItem(
-                title: 'Snippet',
-                isSelected: selectedItem == 'Snippet',
-                onTap: () => onNavItemClick('Snippet'),
+                title: 'Snippets',
+                isSelected: selectedItem == 'Snippets',
+                onTap: () => onNavItemClick('Snippets'),
               ),
 
               SwitchItem(
