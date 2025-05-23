@@ -31,6 +31,11 @@ class CustomAppBar extends StatelessWidget {
                 onTap: () => onNavItemClick('Home'),
               ),
               NavItem(
+                title: 'What I Do',
+                isSelected: selectedItem == 'What I Do',
+                onTap: () => onNavItemClick('What I Do'),
+              ),
+              NavItem(
                 title: 'Portfolio',
                 isSelected: selectedItem == 'Portfolio',
                 onTap: () => onNavItemClick('Portfolio'),
@@ -40,11 +45,7 @@ class CustomAppBar extends StatelessWidget {
                 isSelected: selectedItem == 'Snippets',
                 onTap: () => onNavItemClick('Snippets'),
               ),
-              NavItem(
-                title: 'Mentorship',
-                isSelected: selectedItem == 'Mentorship',
-                onTap: () => onNavItemClick('Mentorship'),
-              ),
+              
               NavItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',

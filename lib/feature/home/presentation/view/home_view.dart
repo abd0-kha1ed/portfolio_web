@@ -17,7 +17,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final heroKey = GlobalKey();
-  final bioKey = GlobalKey();
   final whatIDoKey = GlobalKey();
   final featuredKey = GlobalKey();
   final snippetsKey = GlobalKey();
@@ -30,6 +29,12 @@ class _HomeViewState extends State<HomeView> {
     if (section == 'Home') {
       Scrollable.ensureVisible(
         heroKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } else if (section == 'What I Do') {
+      Scrollable.ensureVisible(
+        whatIDoKey.currentContext!,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
@@ -66,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
             HomeHeroSection(
               key: heroKey,
             ).animate().fade(duration: 600.ms).slideY(begin: 0.2),
-            HomeBiographySection(key: bioKey)
+            HomeBiographySection()
                 .animate()
                 .fade(duration: 600.ms, delay: 200.ms)
                 .slideY(begin: 0.2),
