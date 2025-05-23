@@ -31,12 +31,12 @@ class BiographyText extends StatelessWidget {
                     'Passionate about crafting scalable Flutter applications with ',
               ),
               TextSpan(
-                text: 'clean architecture',
+                text: 'clean architecture.\n',
                 style: TextStyle(color: AppColors.blueDark),
               ),
               TextSpan(
                 text:
-                    '. I enjoy learning, writing documentation, and collaborating with teams. Excited about ',
+                    'I enjoy learning, writing documentation, and collaborating with teams.\nExcited about ',
               ),
               TextSpan(
                 text: 'Flutter',

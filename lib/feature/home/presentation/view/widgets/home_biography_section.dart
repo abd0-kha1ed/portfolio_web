@@ -47,13 +47,8 @@ class HomeBiographySection extends StatelessWidget {
                         child: CircleAvatar(radius: 45, child: FlutterLogo()),
                       ),
                       const SizedBox(width: 32),
-
-                      // النص
-                      const Expanded(child: BiographyText()),
-
-                      const SizedBox(width: 48),
-
-                      // let’s connect
+                      const BiographyText(),
+                      const SizedBox(width: 85),
                       const ConnectSection(),
                     ],
                   ),
@@ -62,7 +57,3 @@ class HomeBiographySection extends StatelessWidget {
     );
   }
 }
-
-
-
-
