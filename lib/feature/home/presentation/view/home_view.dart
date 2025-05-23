@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-    } else if (section == 'Projects') {
+    } else if (section == 'Portfolio') {
       Scrollable.ensureVisible(
         featuredKey.currentContext!,
         duration: const Duration(milliseconds: 500),

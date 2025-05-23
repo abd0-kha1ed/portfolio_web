@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomeSnippetsSection extends StatefulWidget {
@@ -97,7 +99,9 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                 Align(
                   alignment: Alignment.centerLeft,
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).push(AppRouter.kSnippets);
+                    },
                     icon: Icon(Icons.menu),
                     label: Text('See More'),
                     style: ElevatedButton.styleFrom(

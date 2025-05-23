@@ -98,6 +98,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                       padding: const EdgeInsets.only(left: 24),
                       child: Image.asset(Assets.imagesNew),
                     ),
+                    const SizedBox(height: 10),
                     isWide
                         ? Wrap(
                           spacing: 32,

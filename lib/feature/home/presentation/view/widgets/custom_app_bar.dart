@@ -31,9 +31,9 @@ class CustomAppBar extends StatelessWidget {
                 onTap: () => onNavItemClick('Home'),
               ),
               NavItem(
-                title: 'Projects',
-                isSelected: selectedItem == 'Projects',
-                onTap: () => onNavItemClick('Projects'),
+                title: 'Portfolio',
+                isSelected: selectedItem == 'Portfolio',
+                onTap: () => onNavItemClick('Portfolio'),
               ),
               NavItem(
                 title: 'Snippets',
