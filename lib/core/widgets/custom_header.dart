@@ -36,6 +36,12 @@ class CustomHeader extends StatelessWidget {
                 onTap: () => onNavItemClick('Portfolio'),
               ),
               SwitchItem(
+                title: 'Snippet',
+                isSelected: selectedItem == 'Snippet',
+                onTap: () => onNavItemClick('Snippet'),
+              ),
+
+              SwitchItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',
                 onTap: () => onNavItemClick('Contact'),

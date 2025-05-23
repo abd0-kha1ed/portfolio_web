@@ -66,28 +66,28 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                   spacing: 24,
                   runSpacing: 24,
                   children: const [
-                    _SnippetCard(
+                    SnippetCard(
                       title: 'Flutter Auth Starter',
                       description:
                           'Basic login/register flow with Cubit and Firebase.',
                       stars: 12,
                       icons: [Icons.flutter_dash, Icons.lock],
                     ),
-                    _SnippetCard(
+                    SnippetCard(
                       title: 'Clean Architecture Template',
                       description:
                           'Base Flutter project with layered clean structure.',
                       stars: 8,
                       icons: [Icons.architecture, Icons.layers],
                     ),
-                    _SnippetCard(
+                    SnippetCard(
                       title: 'Adaptive Layout Scaffold',
                       description:
                           'Responsive layout using MediaQuery & LayoutBuilder.',
                       stars: 6,
                       icons: [Icons.devices, Icons.view_compact],
                     ),
-                    _SnippetCard(
+                    SnippetCard(
                       title: 'Cubit HTTP Example',
                       description: 'API integration using Dio + Cubit pattern.',
                       stars: 10,
@@ -130,13 +130,13 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
   }
 }
 
-class _SnippetCard extends StatelessWidget {
+class SnippetCard extends StatelessWidget {
   final String title;
   final String description;
   final int stars;
   final List<IconData> icons;
 
-  const _SnippetCard({
+  const SnippetCard({super.key, 
     required this.title,
     required this.description,
     required this.stars,
