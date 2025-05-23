@@ -5,11 +5,13 @@ class SnippetModel {
   final String description;
   final int stars;
   final List<IconData> icons;
+  final String code;
 
   SnippetModel({
     required this.title,
     required this.description,
     required this.stars,
     required this.icons,
+    required this.code,
   });
 }
