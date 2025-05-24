@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/service_card.dart';
 
@@ -91,7 +93,9 @@ class HomeWhatIDoSection extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 80),
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  GoRouter.of(context).push(AppRouter.kAbout);
+                                },
                                 icon: Image.asset(Assets.imagesWhatIDoArrow),
                               ),
                             ),

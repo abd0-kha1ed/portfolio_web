@@ -14,6 +14,13 @@ class AppTextStyles {
     height: 1.29,
     letterSpacing: 1,
   );
+  static const TextStyle bold36 = TextStyle(
+    color: Colors.white,
+    fontSize: 36,
+    fontWeight: FontWeight.w700,
+    height: 1.29,
+    letterSpacing: 1,
+  );
   static const TextStyle bold24 = TextStyle(
     color: Colors.white,
     fontSize: 24,
@@ -32,6 +39,20 @@ class AppTextStyles {
     color: Colors.white,
     fontSize: 18,
     fontWeight: FontWeight.w700,
+    height: 1.29,
+    letterSpacing: 1,
+  );
+  static const TextStyle normal16 = TextStyle(
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 1.29,
+    letterSpacing: 1,
+  );
+  static const TextStyle normal14 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
     height: 1.29,
     letterSpacing: 1,
   );

@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -45,7 +45,7 @@ class CustomAppBar extends StatelessWidget {
                 isSelected: selectedItem == 'Snippets',
                 onTap: () => onNavItemClick('Snippets'),
               ),
-              
+
               NavItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',
