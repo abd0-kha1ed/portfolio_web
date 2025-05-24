@@ -7,11 +7,7 @@ class SnippetCodeDialog extends StatelessWidget {
   final String title;
   final String code;
 
-  const SnippetCodeDialog({
-    super.key,
-    required this.title,
-    required this.code,
-  });
+  const SnippetCodeDialog({super.key, required this.title, required this.code});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +36,9 @@ class SnippetCodeDialog extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // العنوان
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: SelectableText(
                 title,
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: Colors.white,

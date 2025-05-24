@@ -41,7 +41,7 @@ class ProjectCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   type,
                   style: const TextStyle(
                     color: AppColors.secondaryText,
@@ -50,7 +50,7 @@ class ProjectCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
+                SelectableText(
                   title,
                   style: const TextStyle(
                     color: AppColors.white,
@@ -59,7 +59,7 @@ class ProjectCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
+                SelectableText(
                   description,
                   style: const TextStyle(
                     color: AppColors.secondaryText,
@@ -67,7 +67,7 @@ class ProjectCard extends StatelessWidget {
                     height: 1.5,
                   ),
                   maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
+                  // overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

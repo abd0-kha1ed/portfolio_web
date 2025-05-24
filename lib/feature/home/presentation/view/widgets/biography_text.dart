@@ -9,7 +9,7 @@ class BiographyText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        Text(
+        SelectableText(
           'Biography',
           style: TextStyle(
             fontSize: 20,
@@ -18,7 +18,7 @@ class BiographyText extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8),
-        Text.rich(
+        SelectableText.rich(
           TextSpan(
             style: TextStyle(
               fontSize: 16,

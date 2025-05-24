@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          SelectableText(
             'Abd El-Rhman',
             style: AppTextStyles.name.copyWith(color: AppColors.white),
           ),
@@ -77,7 +77,7 @@ class NavItem extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Text(
+        child: SelectableText(
           title,
           style: TextStyle(
             fontSize: 16,

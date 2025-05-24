@@ -9,9 +9,9 @@ class SnippetsHeaderSection extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Code Snippets', style: AppTextStyles.bold48),
+        SelectableText('Code Snippets', style: AppTextStyles.bold48),
         SizedBox(height: 45),
-        Text('Search code snippet', style: AppTextStyles.bold18),
+        SelectableText('Search code snippet', style: AppTextStyles.bold18),
         SizedBox(height: 20),
       ],
     );

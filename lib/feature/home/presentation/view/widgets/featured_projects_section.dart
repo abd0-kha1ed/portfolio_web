@@ -84,7 +84,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    const SelectableText(
                       'Featured Project',
                       style: TextStyle(
                         fontSize: 28,
@@ -129,7 +129,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                           GoRouter.of(context).push(AppRouter.kProjects);
                         },
                         icon: Icon(Icons.menu),
-                        label: Text('See More'),
+                        label: SelectableText('See More'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.background,
                           foregroundColor: AppColors.white,

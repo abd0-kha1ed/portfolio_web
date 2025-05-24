@@ -47,12 +47,15 @@ class _ProjectsViewBodyState extends State<ProjectsViewBody> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Project that i', style: AppTextStyles.bold56),
+                    const SelectableText(
+                      'Project that i',
+                      style: AppTextStyles.bold56,
+                    ),
                     Row(
                       children: [
-                        Text('has been', style: AppTextStyles.bold56),
+                        SelectableText('has been', style: AppTextStyles.bold56),
                         const SizedBox(width: 8),
-                        Text(
+                        SelectableText(
                           'done',
                           style: AppTextStyles.bold56.copyWith(
                             color: AppColors.accent,

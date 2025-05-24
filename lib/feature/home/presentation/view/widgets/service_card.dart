@@ -30,7 +30,7 @@ class ServiceCard extends StatelessWidget {
             child: Icon(icon, color: AppColors.white),
           ),
           const SizedBox(height: 16),
-          Text(
+          SelectableText(
             title,
             style: const TextStyle(
               color: AppColors.white,
@@ -39,7 +39,7 @@ class ServiceCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Text(
+          SelectableText(
             description,
             style: const TextStyle(
               color: AppColors.secondaryText,

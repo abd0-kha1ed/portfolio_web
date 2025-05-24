@@ -55,7 +55,7 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                const SelectableText(
                   'Code Snippet',
                   style: TextStyle(
                     fontSize: 28,
@@ -65,47 +65,49 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                 ),
                 const SizedBox(height: 32),
                 LayoutBuilder(
-  builder: (context, constraints) {
-    final width = constraints.maxWidth;
-    final crossAxisCount = width > 1100
-        ? 4
-        : width > 800
-            ? 2
-            : 1;
+                  builder: (context, constraints) {
+                    final width = constraints.maxWidth;
+                    final crossAxisCount =
+                        width > 1100
+                            ? 4
+                            : width > 800
+                            ? 2
+                            : 1;
 
-    return GridView.count(
-      crossAxisCount: crossAxisCount,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      crossAxisSpacing: 24,
-      mainAxisSpacing: 24,
-      childAspectRatio: 1.4,
-      children: allSnippets
-          .take(4) 
-          .map(
-            (snippet) => GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => SnippetCodeDialog(
-                    title: snippet.title,
-                    code: snippet.code,
-                  ),
-                );
-              },
-              child: SnippetCard(
-                title: snippet.title,
-                description: snippet.description,
-                stars: snippet.stars,
-                icons: snippet.icons,
-              ),
-            ),
-          )
-          .toList(),
-    );
-  },
-),
-
+                    return GridView.count(
+                      crossAxisCount: crossAxisCount,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisSpacing: 24,
+                      mainAxisSpacing: 24,
+                      childAspectRatio: 1.4,
+                      children:
+                          allSnippets
+                              .take(4)
+                              .map(
+                                (snippet) => GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder:
+                                          (_) => SnippetCodeDialog(
+                                            title: snippet.title,
+                                            code: snippet.code,
+                                          ),
+                                    );
+                                  },
+                                  child: SnippetCard(
+                                    title: snippet.title,
+                                    description: snippet.description,
+                                    stars: snippet.stars,
+                                    icons: snippet.icons,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                    );
+                  },
+                ),
 
                 const SizedBox(height: 16),
                 Align(
@@ -168,7 +170,7 @@ class SnippetCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            SelectableText(
               title,
               style: const TextStyle(
                 color: AppColors.white,
@@ -177,7 +179,7 @@ class SnippetCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
+            SelectableText(
               description,
               style: const TextStyle(
                 color: AppColors.secondaryText,
@@ -185,7 +187,7 @@ class SnippetCard extends StatelessWidget {
                 height: 1.5,
               ),
             ),
-            const Spacer(), // ✅ الآن سيعمل بشكل صحيح
+            const Spacer(),
             Row(
               children: [
                 ...icons.map(
@@ -197,7 +199,7 @@ class SnippetCard extends StatelessWidget {
                 const Spacer(),
                 const Icon(Icons.star, color: Colors.amber, size: 18),
                 const SizedBox(width: 4),
-                Text(
+                SelectableText(
                   '$stars Stars',
                   style: const TextStyle(
                     color: AppColors.secondaryText,

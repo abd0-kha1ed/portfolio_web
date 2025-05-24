@@ -12,7 +12,7 @@ class CustomFooter extends StatelessWidget {
       children: [
         const Divider(color: AppColors.normalText),
         const SizedBox(height: 48),
-        const Text('Reach me out', style: AppTextStyles.semibold14),
+        const SelectableText('Reach me out', style: AppTextStyles.semibold14),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

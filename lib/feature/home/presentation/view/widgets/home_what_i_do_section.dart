@@ -26,7 +26,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            Text(
+                            SelectableText(
                               'What I do',
                               style: TextStyle(
                                 fontSize: 20,
@@ -35,7 +35,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 12),
-                            Text.rich(
+                            SelectableText.rich(
                               TextSpan(
                                 style: TextStyle(
                                   fontSize: 16,
@@ -107,7 +107,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                   : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      const SelectableText(
                         'What I do',
                         style: TextStyle(
                           fontSize: 20,
@@ -116,7 +116,7 @@ class HomeWhatIDoSection extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 12),
-                      const Text.rich(
+                      const SelectableText.rich(
                         TextSpan(
                           style: TextStyle(
                             fontSize: 16,

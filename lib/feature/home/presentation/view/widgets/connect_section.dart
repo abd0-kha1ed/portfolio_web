@@ -15,7 +15,7 @@ class ConnectSection extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: const Text(
+          child: const SelectableText(
             'Let’s connect',
             style: TextStyle(
               fontSize: 18,
