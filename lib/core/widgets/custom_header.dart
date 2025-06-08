@@ -68,7 +68,7 @@ class SwitchItem extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SelectableText(
+        child: Text(
           title,
           style: TextStyle(
             fontSize: 16,

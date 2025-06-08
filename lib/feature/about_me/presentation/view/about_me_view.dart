@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
+import 'package:portfolio_web/feature/about_me/presentation/view/widgets/experince_section.dart';
 
 class AboutMeView extends StatelessWidget {
   const AboutMeView({super.key});
@@ -12,16 +14,14 @@ class AboutMeView extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 40),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildHeader(),
             const Divider(color: AppColors.normalText),
             const SizedBox(height: 40),
-            _buildTitle(),
-            const SizedBox(height: 20),
-            _buildBiographySection(),
+            _buildBiographySection(context),
             const SizedBox(height: 40),
-            _buildExperienceSection(),
+            ExperienceSection(),
           ],
         ),
       ),
@@ -29,83 +29,62 @@ class AboutMeView extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return CustomHeader(selectedItem: 'About', onNavItemClick: (_) {});
+    return CustomHeader(selectedItem: 'What I Do', onNavItemClick: (_) {});
   }
 
-  Widget _buildTitle() {
-    return SelectableText('About Me', style: AppTextStyles.bold36);
-  }
-
-  Widget _buildBiographySection() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CircleAvatar(
-          radius: 48,
-          backgroundColor: AppColors.white,
-          child: Icon(Icons.person, size: 48, color: AppColors.background),
-        ),
-        const SizedBox(width: 24),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectableText(
-                "Hi, I'm a passionate Flutter developer focused on UI/UX, clean architecture, and modern web/mobile experiences.",
-                style: AppTextStyles.normal16,
-              ),
-              const SizedBox(height: 12),
-              SelectableText(
-                "Currently working part-time at Khadmaty startup, building LMS and attendance systems.",
-                style: AppTextStyles.normal16.copyWith(
-                  color: AppColors.secondaryText,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Icon(Icons.email, size: 20, color: AppColors.accent),
-                  const SizedBox(width: 8),
-                  SelectableText("your.email@example.com", style: AppTextStyles.normal14),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildExperienceSection() {
+  Widget _buildBiographySection(context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SelectableText('Experience', style: AppTextStyles.bold24),
-        const SizedBox(height: 16),
-        Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: AppColors.backgroundCards,
-            borderRadius: BorderRadius.circular(12),
+        Center(
+          child: SelectableText(
+            "Hi Im Abd El-Rhman, a special human \nwith some ability to love learning \nand working on teamwork.",
+            style: AppTextStyles.bold56,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectableText('Flutter Developer – Khadmaty', style: AppTextStyles.bold18),
-              const SizedBox(height: 8),
-              SelectableText(
-                'Nov 2024 – Present',
-                style: AppTextStyles.normal14.copyWith(
-                  color: AppColors.secondaryText,
+        ),
+        const SizedBox(height: 51),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(Assets.imagesInsta),
                 ),
-              ),
-              const SizedBox(height: 12),
-              SelectableText(
-                "Working on mobile apps for education and internal tools. Built features like user auth, LMS dashboards, and attendance tracking.",
-                style: AppTextStyles.normal14,
-              ),
-            ],
-          ),
+                IconButton(onPressed: () {}, icon: Icon(Icons.email)),
+              ],
+            ),
+            const SizedBox(width: 87),
+            CircleAvatar(
+              radius: 100,
+              backgroundColor: AppColors.accentBlue,
+              backgroundImage: AssetImage(Assets.imagesFacebook),
+            ),
+            const SizedBox(width: 51),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SelectableText(
+                  "Biography",
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SelectableText(
+                  "Passionate Flutter developer focused on scalable apps, \nclean code, and intuitive design. Delivering production-level \nsolutions using Firebase, REST APIs, Cubit, and modern UI.",
+                  style: AppTextStyles.normal14.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[500],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );
