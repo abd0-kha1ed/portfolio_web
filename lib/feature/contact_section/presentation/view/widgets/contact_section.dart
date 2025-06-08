@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio_web/core/helpers/functions/send_email_from_fkutter_function.dart';
+import 'package:portfolio_web/core/helpers/functions/send_email_from_flutter_function.dart';
 import 'package:portfolio_web/feature/contact_section/presentation/view/widgets/social_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 

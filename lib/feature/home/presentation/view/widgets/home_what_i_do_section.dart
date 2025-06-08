@@ -23,53 +23,60 @@ class HomeWhatIDoSection extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            SelectableText(
-                              'What I do',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.white,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            SelectableText.rich(
-                              TextSpan(
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.31,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              SelectableText(
+                                'What I do',
                                 style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppColors.secondaryText,
-                                  height: 1.6,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.white,
                                 ),
-                                children: [
-                                  TextSpan(
-                                    text:
-                                        'Build and maintain applications using ',
-                                  ),
-                                  TextSpan(
-                                    text: 'Flutter',
-                                    style: TextStyle(color: AppColors.accent),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        ', focusing on UI/UX and performance. Also mentoring at ',
-                                  ),
-                                  TextSpan(
-                                    text: 'MOFON',
-                                    style: TextStyle(color: AppColors.blueDark),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        '. I value clean code, teamwork, and continuous learning.',
-                                  ),
-                                ],
                               ),
-                            ),
-                          ],
+                              SizedBox(height: 12),
+                              SelectableText.rich(
+                                TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColors.secondaryText,
+                                    height: 1.6,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          'Build and maintain applications using ',
+                                    ),
+                                    TextSpan(
+                                      text: 'Flutter',
+                                      style: TextStyle(color: AppColors.accent),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          ', focusing on UI/UX and performance. Also mentoring at ',
+                                    ),
+                                    TextSpan(
+                                      text: 'MOFON',
+                                      style: TextStyle(
+                                        color: AppColors.blueDark,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          '. I value clean code, teamwork, and continuous learning.',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      const SizedBox(width: 32),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.018,
+                      ),
 
                       Expanded(
                         flex: 3,
@@ -89,7 +96,9 @@ class HomeWhatIDoSection extends StatelessWidget {
                               description:
                                   'I focus on creating smooth and user-friendly designs with Flutter best practices.',
                             ),
-                            SizedBox(width: 50),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 80),
                               child: IconButton(

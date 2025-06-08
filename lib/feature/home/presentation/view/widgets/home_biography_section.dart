@@ -46,9 +46,13 @@ class HomeBiographySection extends StatelessWidget {
                         backgroundColor: AppColors.accent,
                         child: CircleAvatar(radius: 45, child: FlutterLogo()),
                       ),
-                      const SizedBox(width: 32),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.022,
+                      ),
                       const BiographyText(),
-                      const SizedBox(width: 85),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.057,
+                      ),
                       const ConnectSection(),
                     ],
                   ),

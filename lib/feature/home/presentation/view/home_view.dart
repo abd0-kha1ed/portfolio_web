@@ -7,6 +7,7 @@ import 'package:portfolio_web/feature/home/presentation/view/widgets/home_biogra
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_hero_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_snippets_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_what_i_do_section.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/show_contact_in_home.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -20,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
   final whatIDoKey = GlobalKey();
   final featuredKey = GlobalKey();
   final snippetsKey = GlobalKey();
+  final contactKey = GlobalKey();
 
   String selectedItem = 'Home'; // يبدأ بـ Home تلقائيًا
 
@@ -50,6 +52,12 @@ class _HomeViewState extends State<HomeView> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
+    } else if (section == 'Contact') {
+      Scrollable.ensureVisible(
+        contactKey.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
     }
 
     // Add other sections here later...
@@ -60,11 +68,14 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomAppBar(onNavItemClick: scrollTo, selectedItem: selectedItem),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 150),
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.1,
+              ),
               child: const Divider(color: AppColors.normalText),
             ),
             const SizedBox(height: 20),
@@ -81,6 +92,9 @@ class _HomeViewState extends State<HomeView> {
                 .slideY(begin: 0.2),
             HomeFeaturedProjectSection(key: featuredKey),
             HomeSnippetsSection(key: snippetsKey),
+            const SizedBox(height: 60),
+            ShowContactInHome(key: contactKey),
+            const SizedBox(height: 16),
           ],
         ),
       ),

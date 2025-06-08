@@ -16,7 +16,7 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 230,
+      width: MediaQuery.of(context).size.width * 0.18,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.backgroundCards,
@@ -30,12 +30,15 @@ class ServiceCard extends StatelessWidget {
             child: Icon(icon, color: AppColors.white),
           ),
           const SizedBox(height: 16),
-          SelectableText(
-            title,
-            style: const TextStyle(
-              color: AppColors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: SelectableText(
+              title,
+              style: const TextStyle(
+                color: AppColors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
           ),
           const SizedBox(height: 12),
