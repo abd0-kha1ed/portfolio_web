@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_web/core/helpers/functions/send_email_from_fkutter_function.dart';
 import 'package:portfolio_web/feature/contact_section/presentation/view/widgets/social_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -126,15 +127,15 @@ class _ContactSectionState extends State<ContactSection> {
       children: [
         _contactRow(
           Icons.email,
-          "abdelrahmankhaled60660@gmail.com",
-          "mailto:abdelrahmankhaled60660@gmail.com",
+          "abdelrahmankhaleddev@gmail.com",
+          "mailto:abdelrahmankhaleddev@gmail.com",
           Colors.tealAccent,
         ),
         const SizedBox(height: 16),
         _contactRow(
           FontAwesomeIcons.whatsapp,
           "WhatsApp me",
-          "https://wa.me/966XXXXXXXXX",
+          "https://wa.me/+201007287335",
           Colors.greenAccent,
         ),
         const SizedBox(height: 32),
@@ -144,17 +145,17 @@ class _ContactSectionState extends State<ContactSection> {
             SocialIcon(
               icon: Icons.code,
               label: "GitHub",
-              url: "https://github.com/yourprofile",
+              url: "https://github.com/abd0-kha1ed",
             ),
             SocialIcon(
               icon: Icons.business,
               label: "LinkedIn",
-              url: "https://linkedin.com/in/yourprofile",
+              url: "https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BYYQieOSqTkySWOAXTWvr5w%3D%3D",
             ),
             SocialIcon(
               icon: Icons.camera_alt,
               label: "Instagram",
-              url: "https://instagram.com/yourprofile",
+              url: "https://www.instagram.com/abdelrhmankhaleddev?igsh=b2ZzMWhpNGR3OTFl",
             ),
           ],
         ),
@@ -176,9 +177,14 @@ class _ContactSectionState extends State<ContactSection> {
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Message sent (not really)")),
+                sendEmail(
+                  _nameController.text,
+                  _emailController.text,
+                  _messageController.text,
                 );
+                _nameController.clear();
+                _emailController.clear();
+                _messageController.clear();
               }
             },
             style: ElevatedButton.styleFrom(
