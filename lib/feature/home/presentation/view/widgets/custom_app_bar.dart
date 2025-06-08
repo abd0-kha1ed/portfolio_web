@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 
 class CustomAppBar extends StatelessWidget {
   final void Function(String section) onNavItemClick;
@@ -49,7 +51,7 @@ class CustomAppBar extends StatelessWidget {
               NavItem(
                 title: 'Contact',
                 isSelected: selectedItem == 'Contact',
-                onTap: () => onNavItemClick('Contact'),
+                onTap: () => GoRouter.of(context).push(AppRouter.kContact)
               ),
             ],
           ),
