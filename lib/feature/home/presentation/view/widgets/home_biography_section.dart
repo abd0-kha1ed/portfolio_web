@@ -21,14 +21,14 @@ class HomeBiographySection extends StatelessWidget {
                   ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: HomeProfile(),
-                      ),
+                      Align(alignment: Alignment.center, child: HomeProfile()),
                       const SizedBox(height: 24),
 
                       // النص
-                      const BiographyText(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.34,
+                        child: const BiographyText(),
+                      ),
 
                       const SizedBox(height: 24),
 
@@ -47,7 +47,10 @@ class HomeBiographySection extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.022,
                       ),
-                      const BiographyText(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.34,
+                        child: const BiographyText(),
+                      ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.057,
                       ),
@@ -59,5 +62,3 @@ class HomeBiographySection extends StatelessWidget {
     );
   }
 }
-
-

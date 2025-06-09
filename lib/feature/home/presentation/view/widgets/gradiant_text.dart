@@ -17,9 +17,11 @@ class GradientText extends StatelessWidget {
     return ShaderMask(
       blendMode: BlendMode.srcIn,
       shaderCallback: (bounds) {
-        return gradient.createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height));
+        return gradient.createShader(
+          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+        );
       },
-      child: SelectableText(text, style: style),
+      child: SelectableText(text, style: style, textAlign: TextAlign.center),
     );
   }
 }
