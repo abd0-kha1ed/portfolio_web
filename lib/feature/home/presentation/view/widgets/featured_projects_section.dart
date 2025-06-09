@@ -61,7 +61,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
           scale: _scaleAnimation,
           child: Container(
             // color: AppColors.background,
-            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 60),
+            padding: const EdgeInsets.symmetric(vertical: 60),
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final isWide = constraints.maxWidth > 850;

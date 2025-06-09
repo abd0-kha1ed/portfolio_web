@@ -15,7 +15,7 @@ class HomeWhatIDoSection extends StatelessWidget {
         bool isWide = constraints.maxWidth > 850;
 
         return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 60),
+          padding: const EdgeInsets.symmetric(vertical: 60),
           child:
               isWide
                   ? Row(
@@ -159,19 +159,28 @@ class HomeWhatIDoSection extends StatelessWidget {
                       Wrap(
                         spacing: 24,
                         runSpacing: 24,
-                        children: const [
-                          ServiceCard(
+                        children:  [
+                          const ServiceCard(
                             icon: Icons.flutter_dash,
                             title: 'Flutter Development',
                             description:
                                 'I build fast, responsive, and beautiful mobile & web apps using Flutter.',
                           ),
-                          ServiceCard(
+                          const ServiceCard(
                             icon: Icons.design_services,
                             title: 'UI/UX in Flutter',
                             description:
                                 'I focus on creating smooth and user-friendly designs with Flutter best practices.',
                           ),
+                          Padding(
+                              padding:  EdgeInsets.symmetric(vertical: 80),
+                              child: IconButton(
+                                onPressed: () {
+                                  GoRouter.of(context).push(AppRouter.kAbout);
+                                },
+                                icon: Image.asset(Assets.imagesWhatIDoArrow),
+                              ),
+                            ),
                         ],
                       ),
                     ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/biography_text.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/connect_section.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/home_profile.dart';
 
 class HomeBiographySection extends StatelessWidget {
   const HomeBiographySection({super.key});
@@ -14,17 +15,15 @@ class HomeBiographySection extends StatelessWidget {
 
         return Container(
           color: AppColors.background,
-          padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 40),
+          padding: const EdgeInsets.symmetric(vertical: 40),
           child:
               isMobile
                   ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // الصورة
-                      CircleAvatar(
-                        radius: 48,
-                        backgroundColor: AppColors.accent,
-                        child: CircleAvatar(radius: 45, child: FlutterLogo()),
+                      Align(
+                        alignment: Alignment.center,
+                        child: HomeProfile(),
                       ),
                       const SizedBox(height: 24),
 
@@ -40,7 +39,6 @@ class HomeBiographySection extends StatelessWidget {
                   : Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // الصورة
                       CircleAvatar(
                         radius: 48,
                         backgroundColor: AppColors.accent,
@@ -61,3 +59,5 @@ class HomeBiographySection extends StatelessWidget {
     );
   }
 }
+
+

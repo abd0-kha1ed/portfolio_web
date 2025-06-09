@@ -51,7 +51,7 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
           opacity: _controller,
           child: Container(
             color: AppColors.background,
-            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 60),
+            padding: const EdgeInsets.symmetric(vertical: 60),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -70,7 +70,7 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                     final crossAxisCount =
                         width > 1100
                             ? 4
-                            : width > 800
+                            : width > 600
                             ? 2
                             : 1;
 
@@ -96,11 +96,15 @@ class _HomeSnippetsSectionState extends State<HomeSnippetsSection>
                                           ),
                                     );
                                   },
-                                  child: SnippetCard(
-                                    title: snippet.title,
-                                    description: snippet.description,
-                                    stars: snippet.stars,
-                                    icons: snippet.icons,
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.3871507795,
+                                    child: SnippetCard(
+                                      title: snippet.title,
+                                      description: snippet.description,
+                                      stars: snippet.stars,
+                                      icons: snippet.icons,
+                                    ),
                                   ),
                                 ),
                               )

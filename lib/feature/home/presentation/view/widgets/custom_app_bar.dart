@@ -15,11 +15,14 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 40),
+      padding: const EdgeInsets.symmetric(vertical: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SelectableText('Abd El-Rhman', style: AppTextStyles.bold24),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: SelectableText('Abd El-Rhman', style: AppTextStyles.bold24),
+          ),
           Row(
             children: [
               NavItem(
@@ -74,12 +77,15 @@ class NavItem extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            color: isSelected ? AppColors.white : AppColors.secondaryText,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              color: isSelected ? AppColors.white : AppColors.secondaryText,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ),
       ),

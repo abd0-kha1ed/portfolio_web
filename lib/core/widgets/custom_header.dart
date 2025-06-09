@@ -17,7 +17,9 @@ class CustomHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SelectableText('Abd El-Rhman', style: AppTextStyles.bold24),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: SelectableText('Abd El-Rhman', style: AppTextStyles.bold24)),
           Row(
             children: [
               SwitchItem(
@@ -68,12 +70,15 @@ class SwitchItem extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            color: isSelected ? AppColors.white : AppColors.secondaryText,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              color: isSelected ? AppColors.white : AppColors.secondaryText,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ),
       ),
