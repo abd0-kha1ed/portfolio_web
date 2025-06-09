@@ -1,82 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/biography_text.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/connection_icons.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/gradiant_text.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/home_profile.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/service_card.dart';
-import 'package:portfolio_web/feature/home/presentation/view/widgets/what_i_do_text.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
+import 'package:portfolio_web/core/widgets/mobile_bottom_nav.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/mobile_layout_body.dart';
 
-class MobileLayout extends StatelessWidget {
+class MobileLayout extends StatefulWidget {
   const MobileLayout({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: MobileLayoutBody());
-  }
+  State<MobileLayout> createState() => _MobileLayoutState();
 }
 
-class MobileLayoutBody extends StatelessWidget {
-  const MobileLayoutBody({super.key});
+class _MobileLayoutState extends State<MobileLayout> {
+  final GlobalKey homeKey = GlobalKey();
+  int currentIndex = 0;
+
+  final ScrollController _scrollController = ScrollController();
+
+  void scrollToSection(GlobalKey key) {
+    Scrollable.ensureVisible(
+      key.currentContext!,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 37),
-            HomeProfile(),
-            const SizedBox(height: 22),
-            ConnectionIcons(),
-            const SizedBox(height: 38),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 900),
-              child: GradientText(
-                'Hi I\'m Abd El-Rhman, a special human with some ability to love learning and working on teamwork.',
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF3BF686), Color(0xFF4CA9FF)],
-                ),
-                style: const TextStyle(
-                  fontSize: 38,
-                  fontWeight: FontWeight.w800,
-                  height: 1.4,
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
-            const BiographyText(),
-            const SizedBox(height: 14),
-            const WhatIDoText(),
-            const SizedBox(height: 50),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8569545155,
-              child: const Row(
-                children: [
-                  Expanded(
-                    child: ServiceCard(
-                      icon: Icons.flutter_dash,
-                      title: 'Flutter Development',
-                      description:
-                          'I build fast, responsive, and beautiful mobile & web apps using Flutter.',
-                    ),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: ServiceCard(
-                      icon: Icons.design_services,
-                      title: 'UI/UX in Flutter',
-                      description:
-                          'I focus on creating smooth and user-friendly designs with Flutter best practices.',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 25),
-          ],
-        ),
+    return Scaffold(
+      bottomNavigationBar: MobileBottomNav(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          if (index == currentIndex) {
+            scrollToSection(homeKey);
+          } else if (index == 1) {
+            GoRouter.of(context).push(AppRouter.kMobileProjects);
+          }
+          else if (index == 2) {
+            GoRouter.of(context).push(AppRouter.kMobileSnippets);
+          }
+          else if (index == 3) {}
+          else {
+            setState(() {
+              currentIndex = index;
+            });
+          }
+        },
       ),
+      body: MobileLayoutBody(homeKey: homeKey, scrollController: _scrollController),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/projects/presentation/view/widgets/all_projects_layout.dart';
+import 'package:portfolio_web/feature/projects/presentation/view/widgets/project_text.dart';
 
 class ProjectsViewBody extends StatefulWidget {
   const ProjectsViewBody({super.key});
@@ -44,27 +44,7 @@ class _ProjectsViewBodyState extends State<ProjectsViewBody> {
             const SizedBox(height: 72),
             Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SelectableText(
-                      'Project that i',
-                      style: AppTextStyles.bold56,
-                    ),
-                    Row(
-                      children: [
-                        SelectableText('has been', style: AppTextStyles.bold56),
-                        const SizedBox(width: 8),
-                        SelectableText(
-                          'done',
-                          style: AppTextStyles.bold56.copyWith(
-                            color: AppColors.accent,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                ProjectText(),
                 const SizedBox(width: 72),
                 Image.asset(Assets.imagesProjectArrow2),
               ],
@@ -79,3 +59,4 @@ class _ProjectsViewBodyState extends State<ProjectsViewBody> {
     );
   }
 }
+

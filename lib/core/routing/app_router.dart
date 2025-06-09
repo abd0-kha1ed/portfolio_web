@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/feature/about_me/presentation/view/about_me_view.dart';
 import 'package:portfolio_web/feature/contact_section/presentation/view/contact_view.dart';
 import 'package:portfolio_web/feature/home/presentation/view/home_view.dart';
+import 'package:portfolio_web/feature/home/presentation/view/mobile_projects.dart';
+import 'package:portfolio_web/feature/home/presentation/view/mobile_snippits.dart';
 import 'package:portfolio_web/feature/projects/presentation/view/project_view.dart';
 import 'package:portfolio_web/feature/snippets/presentation/view/code_snippet_view.dart';
 
@@ -11,6 +13,8 @@ abstract class AppRouter {
   static const String kSnippets = '/snippets';
   static const String kAbout = '/about';
   static const String kContact = '/contact';
+  static const String kMobileProjects = '/mobile_projects';
+  static const String kMobileSnippets = '/mobile_snippets';
   static final router = GoRouter(
     initialLocation: kHome,
     routes: [
@@ -22,6 +26,8 @@ abstract class AppRouter {
       GoRoute(path: kSnippets, builder: (context, state) => CodeSnippetView()),
       GoRoute(path: kAbout, builder: (context, state) => const AboutMeView()),
       GoRoute(path: kContact, builder: (context, state) => const ContactView()),
+      GoRoute(path: kMobileProjects, builder: (context, state) => MobileProjects()),
+      GoRoute(path: kMobileSnippets, builder: (context, state) => MobileSnippets()),
     ],
   );
 }
