@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/all_snippets_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/constants/helper.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
+import 'package:portfolio_web/feature/home/presentation/view/mobile_snippits.dart';
 import 'package:portfolio_web/feature/snippets/data/model/snippet_model.dart';
 import 'package:portfolio_web/feature/snippets/presentation/view/widgets/responsive_snippet_grid.dart';
 import 'package:portfolio_web/feature/snippets/presentation/view/widgets/snippets_header_section.dart';
@@ -57,9 +59,20 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return LayoutBuilder(
+      builder:
+          (context, constrains) =>
+              constrains.maxWidth < 800
+                  ? MobileSnippets()
+                  : buildSnippetsDesktopLayout(width),
+    );
+  }
+
+  SingleChildScrollView buildSnippetsDesktopLayout(double width) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 150),
+        padding: EdgeInsets.symmetric(horizontal: width * horizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -21,7 +21,7 @@ class ShowContactInHome extends StatelessWidget {
             foregroundColor: AppColors.white,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
           child: Padding(

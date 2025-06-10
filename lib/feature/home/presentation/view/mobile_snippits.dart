@@ -55,6 +55,7 @@ class _MobileSnippetsBodyState extends State<MobileSnippetsBody> {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
+            const SizedBox(height: 28),
             const SnippetsHeaderSection(),
             SnippetsSearchField(
               searchController: _searchController,

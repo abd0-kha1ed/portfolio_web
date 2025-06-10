@@ -51,31 +51,58 @@ class _ExperienceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 200,
-          child: Column(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 800;
+
+        if (isMobile) {
+          return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(role,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white)),
               const SizedBox(height: 4),
-              Text(company, style:  TextStyle(color: Colors.grey[500])),
-              Text(date, style:  TextStyle(color: Colors.grey[500])),
+              Text(company, style: TextStyle(color: Colors.grey[500])),
+              Text(date, style: TextStyle(color: Colors.grey[500])),
+              const SizedBox(height: 12),
+              Text(
+                description,
+                style: TextStyle(color: Colors.grey[500], height: 1.5),
+              ),
             ],
-          ),
-        ),
-        const SizedBox(width: 32),
-        Expanded(
-          child: Text(
-            description,
-            style:  TextStyle(color: Colors.grey[500], height: 1.5),
-          ),
-        ),
-      ],
+          );
+        } else {
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(role,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.white)),
+                    const SizedBox(height: 4),
+                    Text(company, style: TextStyle(color: Colors.grey[500])),
+                    Text(date, style: TextStyle(color: Colors.grey[500])),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 32),
+              Expanded(
+                child: Text(
+                  description,
+                  style: TextStyle(color: Colors.grey[500], height: 1.5),
+                ),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }

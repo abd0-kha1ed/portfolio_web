@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/helpers/functions/send_email_from_flutter_function.dart';
 import 'package:portfolio_web/feature/contact_section/presentation/view/widgets/social_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,7 +26,7 @@ class _ContactSectionState extends State<ContactSection> {
         Positioned(
           top: 50,
           left: 40,
-          child: _blurredCircle(180, Colors.teal.withOpacity(0.08))
+          child: _blurredCircle(180, Colors.teal.withValues(alpha: 0.08))
               .animate(onPlay: (c) => c.repeat(reverse: true))
               .move(
                 duration: 6000.ms,
@@ -37,7 +38,7 @@ class _ContactSectionState extends State<ContactSection> {
         Positioned(
           bottom: 60,
           right: 60,
-          child: _blurredCircle(140, Colors.purple.withOpacity(0.07))
+          child: _blurredCircle(140, Colors.purple.withValues(alpha: 0.07))
               .animate(onPlay: (c) => c.repeat(reverse: true))
               .move(
                 duration: 8000.ms,
@@ -49,7 +50,7 @@ class _ContactSectionState extends State<ContactSection> {
         Positioned(
           top: 200,
           right: 120,
-          child: _blurredCircle(100, Colors.blueGrey.withOpacity(0.06))
+          child: _blurredCircle(100, Colors.blueGrey.withValues(alpha: 0.06))
               .animate(onPlay: (c) => c.repeat(reverse: true))
               .move(
                 duration: 10000.ms,
@@ -129,14 +130,14 @@ class _ContactSectionState extends State<ContactSection> {
           Icons.email,
           "abdelrahmankhaleddev@gmail.com",
           "mailto:abdelrahmankhaleddev@gmail.com",
-          Colors.tealAccent,
+          AppColors.accentLight,
         ),
         const SizedBox(height: 16),
         _contactRow(
           FontAwesomeIcons.whatsapp,
           "WhatsApp me",
           "https://wa.me/+201007287335",
-          Colors.greenAccent,
+          AppColors.accentLight,
         ),
         const SizedBox(height: 32),
         Wrap(
@@ -150,12 +151,14 @@ class _ContactSectionState extends State<ContactSection> {
             SocialIcon(
               icon: Icons.business,
               label: "LinkedIn",
-              url: "https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BYYQieOSqTkySWOAXTWvr5w%3D%3D",
+              url:
+                  "https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BYYQieOSqTkySWOAXTWvr5w%3D%3D",
             ),
             SocialIcon(
               icon: Icons.camera_alt,
               label: "Instagram",
-              url: "https://www.instagram.com/abdelrhmankhaleddev?igsh=b2ZzMWhpNGR3OTFl",
+              url:
+                  "https://www.instagram.com/abdelrhmankhaleddev?igsh=b2ZzMWhpNGR3OTFl",
             ),
           ],
         ),
@@ -188,7 +191,7 @@ class _ContactSectionState extends State<ContactSection> {
               }
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.tealAccent,
+              backgroundColor: AppColors.accent,
               foregroundColor: Colors.black,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
               shape: RoundedRectangleBorder(

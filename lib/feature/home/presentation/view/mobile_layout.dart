@@ -25,6 +25,45 @@ class _MobileLayoutState extends State<MobileLayout> {
     );
   }
 
+  void showMoreOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.black87,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.white),
+              title: const Text(
+                'About Me',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                GoRouter.of(context).pop(); 
+                GoRouter.of(context).push(AppRouter.kAbout);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.mail, color: Colors.white),
+              title: const Text(
+                'Contact',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                GoRouter.of(context).push(AppRouter.kContact);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,19 +74,21 @@ class _MobileLayoutState extends State<MobileLayout> {
             scrollToSection(homeKey);
           } else if (index == 1) {
             GoRouter.of(context).push(AppRouter.kMobileProjects);
-          }
-          else if (index == 2) {
+          } else if (index == 2) {
             GoRouter.of(context).push(AppRouter.kMobileSnippets);
-          }
-          else if (index == 3) {}
-          else {
+          } else if (index == 3) {
+            showMoreOptions(context);
+          } else {
             setState(() {
               currentIndex = index;
             });
           }
         },
       ),
-      body: MobileLayoutBody(homeKey: homeKey, scrollController: _scrollController),
+      body: MobileLayoutBody(
+        homeKey: homeKey,
+        scrollController: _scrollController,
+      ),
     );
   }
 }

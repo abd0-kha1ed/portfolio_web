@@ -24,7 +24,7 @@ class _TabletAndDesktopLayoutState extends State<TabletAndDesktopLayout> {
   final snippetsKey = GlobalKey();
   final contactKey = GlobalKey();
 
-  String selectedItem = 'Home'; // يبدأ بـ Home تلقائيًا
+  String selectedItem = 'Home'; 
 
   void scrollTo(String section) {
     setState(() => selectedItem = section);
