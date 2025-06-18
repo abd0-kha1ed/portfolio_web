@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/constants/helper.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/about_me/presentation/view/widgets/experince_section.dart';
 
@@ -22,7 +25,7 @@ class AboutMeView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            screenWidth < 800 ? const SizedBox() : _buildHeader(),
+            screenWidth < 800 ? const SizedBox() : _buildHeader(context),
             screenWidth < 800
                 ? const SizedBox()
                 : const Divider(color: AppColors.normalText),
@@ -30,14 +33,31 @@ class AboutMeView extends StatelessWidget {
             _buildBiographySection(context),
             const SizedBox(height: 40),
             const ExperienceSection(),
+
+            const CustomFooter(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHeader() {
-    return CustomHeader(selectedItem: 'What I Do', onNavItemClick: (_) {});
+  void onNavItemClick(BuildContext context, String item) {
+    if (item == 'Portfolio') {
+      GoRouter.of(context).push(AppRouter.kProjects);
+    } else if (item == 'Snippets') {
+      GoRouter.of(context).push(AppRouter.kSnippets);
+    } else if (item == 'Contact') {
+      GoRouter.of(context).push(AppRouter.kContact);
+    } else {
+      // Handle other navigation items if needed
+    }
+  }
+
+  Widget _buildHeader(BuildContext context) {
+    return CustomHeader(
+      selectedItem: 'What I Do',
+      onNavItemClick: (item) => onNavItemClick(context, item),
+    );
   }
 
   Widget _buildBiographySection(BuildContext context) {

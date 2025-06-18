@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/helpers/functions/send_email_from_flutter_function.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
+import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/contact_section/presentation/view/widgets/social_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,9 +22,21 @@ class _ContactSectionState extends State<ContactSection> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _messageController = TextEditingController();
+  String selectedItem = 'Contact';
 
+  void onNavItemClick(String section) {
+    setState(() => selectedItem = section);
+    if (section == 'What I Do') {
+      GoRouter.of(context).push(AppRouter.kAbout);
+    } else if (section == 'Portfolio') {
+      GoRouter.of(context).push(AppRouter.kProjects);
+    } else if (section == 'Snippets') {
+      GoRouter.of(context).push(AppRouter.kSnippets);
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Positioned(
@@ -58,65 +74,73 @@ class _ContactSectionState extends State<ContactSection> {
                 end: const Offset(-20, 10),
               ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 32),
-          child: Column(
-            children: [
-              Text(
-                "Contact Me",
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            screenWidth < 800
+                ? const SizedBox()
+                : CustomHeader(
+                  onNavItemClick: onNavItemClick,
+                  selectedItem: selectedItem,
                 ),
-              ).animate().slideY(duration: 500.ms).fadeIn(),
-
-              const SizedBox(height: 12),
-              const Text(
-                "I'm open to freelance projects, collaborations, or just a friendly chat.",
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-                textAlign: TextAlign.center,
-              ).animate().fadeIn(delay: 200.ms),
-
-              const SizedBox(height: 60),
-
-              // Content: Row layout
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final isMobile = constraints.maxWidth < 700;
-                  return isMobile
-                      ? Column(
-                        children: [
-                          _buildContactInfo().animate().fadeIn(),
-                          const SizedBox(height: 32),
-                          _buildForm().animate().fadeIn(delay: 200.ms),
-                        ],
-                      )
-                      : Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: _buildContactInfo().animate().fadeIn(),
-                          ),
-                          const SizedBox(width: 48),
-                          Expanded(
-                            flex: 1,
-                            child: _buildForm().animate().fadeIn(delay: 200.ms),
-                          ),
-                        ],
-                      );
-                },
+            screenWidth < 800 ? const SizedBox() : const Divider(),
+            const SizedBox(height: 60),
+            Text(
+              "Contact Me",
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
+            ).animate().slideY(duration: 500.ms).fadeIn(),
 
-              const SizedBox(height: 60),
+            const SizedBox(height: 12),
+            const Text(
+              "I'm open to freelance projects, collaborations, or just a friendly chat.",
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+              textAlign: TextAlign.center,
+            ).animate().fadeIn(delay: 200.ms),
 
-              // Footer
-              const Text(
-                "Designed & Developed with ❤️ by Abd El-Rhman",
-                style: TextStyle(color: Colors.grey, fontSize: 12),
-              ),
-            ],
-          ),
+            const SizedBox(height: 60),
+
+            // Content: Row layout
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final isMobile = constraints.maxWidth < 700;
+                return isMobile
+                    ? Column(
+                      children: [
+                        _buildContactInfo().animate().fadeIn(),
+                        const SizedBox(height: 32),
+                        _buildForm().animate().fadeIn(delay: 200.ms),
+                      ],
+                    )
+                    : Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: _buildContactInfo().animate().fadeIn(),
+                        ),
+                        const SizedBox(width: 48),
+                        Expanded(
+                          flex: 1,
+                          child: _buildForm().animate().fadeIn(delay: 200.ms),
+                        ),
+                      ],
+                    );
+              },
+            ),
+
+            const SizedBox(height: 60),
+
+            // Footer
+            const Text(
+              "Designed & Developed with ❤️ by Abd El-Rhman",
+              style: TextStyle(color: Colors.grey, fontSize: 12),
+            ),
+            const SizedBox(height: 16),
+            const CustomFooter(),
+          ],
         ),
       ],
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/all_snippets_list.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/constants/helper.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/home/presentation/view/mobile_snippits.dart';
@@ -48,13 +50,13 @@ class _CodeSnippetsViewBodyState extends State<CodeSnippetsViewBody> {
   void onNavItemClick(String section) {
     setState(() => selectedItem = section);
 
-    // if (section == 'Snippets') {
-    //   Scrollable.ensureVisible(
-    //     context,
-    //     duration: const Duration(milliseconds: 500),
-    //     curve: Curves.easeInOut,
-    //   );
-    // }
+    if (section == 'What I Do') {
+      GoRouter.of(context).push(AppRouter.kAbout);
+    } else if (section == 'Portfolio') {
+      GoRouter.of(context).push(AppRouter.kProjects);
+    } else if (section == 'Contact') {
+      GoRouter.of(context).push(AppRouter.kContact);
+    }
   }
 
   @override

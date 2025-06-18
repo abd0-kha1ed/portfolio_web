@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/constants/helper.dart';
+import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
@@ -21,12 +23,12 @@ class _ProjectsViewBodyState extends State<ProjectsViewBody> {
   void onNavItemClick(String section) {
     setState(() => selectedItem = section);
 
-    if (section == 'Projects') {
-      Scrollable.ensureVisible(
-        context,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
+    if (section == 'What I Do') {
+      GoRouter.of(context).push(AppRouter.kAbout);
+    } else if (section == 'Snippets') {
+      GoRouter.of(context).push(AppRouter.kSnippets);
+    } else if (section == 'Contact') {
+      GoRouter.of(context).push(AppRouter.kContact);
     }
   }
 
