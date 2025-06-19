@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/constants/helper.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/featured_projects_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_biography_section.dart';
@@ -24,7 +25,7 @@ class _TabletAndDesktopLayoutState extends State<TabletAndDesktopLayout> {
   final snippetsKey = GlobalKey();
   final contactKey = GlobalKey();
 
-  String selectedItem = 'Home'; 
+  String selectedItem = 'Home';
 
   void scrollTo(String section) {
     setState(() => selectedItem = section);
@@ -97,6 +98,7 @@ class _TabletAndDesktopLayoutState extends State<TabletAndDesktopLayout> {
               const SizedBox(height: 60),
               ShowContactInHome(key: contactKey),
               const SizedBox(height: 16),
+              const CustomFooter(),
             ],
           ),
         ),

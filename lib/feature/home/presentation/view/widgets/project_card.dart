@@ -74,13 +74,13 @@ class ProjectCard extends StatelessWidget {
           ),
 
           Positioned(
-            bottom: 0,
+            bottom: 5,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
                 width: 320,
-                height: 120,
+                height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(

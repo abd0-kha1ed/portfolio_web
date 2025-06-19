@@ -28,7 +28,7 @@ class BiographyText extends StatelessWidget {
             children: [
               TextSpan(
                 text:
-                    'Passionate about crafting scalable Flutter applications with ',
+                    'Flutter enthusiast learning to build adaptive applications with ',
               ),
               TextSpan(
                 text: 'clean architecture. ',
@@ -36,7 +36,7 @@ class BiographyText extends StatelessWidget {
               ),
               TextSpan(
                 text:
-                    'I enjoy learning, writing documentation, and collaborating with teams. Excited about ',
+                    'I enjoy writing clean code, exploring best practices, and collaborating in team environments. Passionate about ',
               ),
               TextSpan(
                 text: 'Flutter',
@@ -47,9 +47,7 @@ class BiographyText extends StatelessWidget {
                 text: 'UI/UX',
                 style: TextStyle(color: AppColors.accent),
               ),
-              TextSpan(
-                text: ', and building adaptive apps for all platforms.',
-              ),
+              TextSpan(text: ', and continuous learning across platforms.'),
             ],
           ),
         ),

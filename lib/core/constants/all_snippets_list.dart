@@ -3,153 +3,182 @@ import 'package:portfolio_web/feature/snippets/data/model/snippet_model.dart';
 
 final List<SnippetModel> allSnippets = [
   SnippetModel(
-    title: 'Nextjs Starter',
-    description: 'Starter boilerplate for Next.js projects.',
+    title: 'Flutter Clean Architecture',
+    description: 'A base Flutter project using Clean Architecture with Cubit & Dependency Injection.',
     code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
+abstract class UseCase<ReturnType, Params> {
+  Future<ReturnType> call(Params params);
 }
 
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
-  }
-}
+class GetUser extends UseCase<User, int> {
+  final UserRepository repository;
+  GetUser(this.repository);
 
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
-    stars: 12,
-    icons: [Icons.code, Icons.web],
+  @override
+  Future<User> call(int id) async {
+    return await repository.getUserById(id);
+  }
+}''',
+    stars: 14,
+    icons: [Icons.layers, Icons.flutter_dash],
   ),
   SnippetModel(
     title: 'Flutter Firebase Auth',
-    description: 'Simple auth flow using Firebase and Cubit.',
+    description: 'A simple and effective authentication flow using Firebase Auth & Cubit.',
     code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
-}
+class AuthCubit extends Cubit<AuthState> {
+  final FirebaseAuth _auth;
+  AuthCubit(this._auth) : super(AuthInitial());
 
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
+  Future<void> signIn(String email, String password) async {
+    try {
+      emit(AuthLoading());
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      emit(AuthSuccess());
+    } catch (_) {
+      emit(AuthFailure());
+    }
   }
-}
-
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
-    stars: 8,
-    icons: [Icons.phone_android, Icons.security],
-  ),
-  SnippetModel(
-    title: 'Flutter Clean Architecture',
-    description: 'Base Flutter project with clean architecture.',
-    code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
-}
-
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
-  }
-}
-
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
-    stars: 6,
-    icons: [Icons.flutter_dash, Icons.layers],
+}''',
+    stars: 12,
+    icons: [Icons.security, Icons.person],
   ),
   SnippetModel(
     title: 'Flutter Adaptive Layout',
-    description: 'Responsive layout using MediaQuery & LayoutBuilder.',
+    description: 'Build responsive UIs using LayoutBuilder & MediaQuery.',
     code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
-}
+Widget build(BuildContext context) {
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      if (constraints.maxWidth > 800) {
+        return DesktopLayout();
+      } else {
+        return MobileLayout();
+      }
+    },
+  );
+}''',
+    stars: 11,
+    icons: [Icons.devices, Icons.grid_view],
+  ),
+  SnippetModel(
+    title: 'Cubit + Dio API Call',
+    description: 'Manage API state with Cubit and Dio in a clean way.',
+    code: '''
+class PostCubit extends Cubit<PostState> {
+  final Dio dio;
+  PostCubit(this.dio) : super(PostInitial());
 
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
+  Future<void> fetchPosts() async {
+    emit(PostLoading());
+    try {
+      final response = await dio.get('/posts');
+      emit(PostLoaded(response.data));
+    } catch (e) {
+      emit(PostError(e.toString()));
+    }
   }
-}
+}''',
+    stars: 9,
+    icons: [Icons.http, Icons.sync],
+  ),
+  SnippetModel(
+    title: 'WebSocket Chat with Cubit',
+    description: 'Create real-time chat using WebSocket and state management.',
+    code: '''
+class ChatCubit extends Cubit<List<String>> {
+  final WebSocketChannel channel;
 
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
+  ChatCubit(this.channel) : super([]) {
+    channel.stream.listen((message) {
+      emit([...state, message]);
+    });
+  }
+
+  void sendMessage(String message) {
+    channel.sink.add(message);
+  }
+}''',
     stars: 10,
-    icons: [Icons.devices, Icons.view_compact],
+    icons: [Icons.chat_bubble, Icons.web],
   ),
   SnippetModel(
-    title: 'Flutter Cubit HTTP Example',
-    description: 'API integration using Dio + Cubit pattern.',
+    title: 'Flutter Form Validation',
+    description: 'A simple login form with validation using GlobalKey.',
     code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
-}
+final _formKey = GlobalKey<FormState>();
 
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
-  }
-}
-
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
-    stars: 5,
-    icons: [Icons.api, Icons.send],
+Form(
+  key: _formKey,
+  child: Column(
+    children: [
+      TextFormField(
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your email';
+          }
+          return null;
+        },
+      ),
+      ElevatedButton(
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            // Process data
+          }
+        },
+        child: Text('Submit'),
+      ),
+    ],
+  ),
+)''',
+    stars: 6,
+    icons: [Icons.input, Icons.check_circle],
   ),
   SnippetModel(
-    title: 'Flutter WebSocket Chat',
-    description: 'Real-time chat app using WebSocket and Cubit.',
+    title: 'Custom AnimationController',
+    description: 'A simple animation using AnimationController and AnimatedBuilder.',
     code: '''
-mixin Flyable {
-  void fly() {
-    print('Flying');
-  }
+class MyAnimatedBox extends StatefulWidget {
+  @override
+  _MyAnimatedBoxState createState() => _MyAnimatedBoxState();
 }
 
-class Bird with Flyable {
-  void chirp() {
-    print('Chirping');
-  }
-}
+class _MyAnimatedBoxState extends State<MyAnimatedBox> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
-void main() {
-  Bird bird = Bird();
-  bird.fly();
-  bird.chirp();
-}
-''',
-    stars: 7,
-    icons: [Icons.chat, Icons.web],
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: 100, end: 200).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Container(
+          width: _animation.value,
+          height: _animation.value,
+          color: Colors.blue,
+        );
+      },
+    );
+  }
+}''',
+    stars: 8,
+    icons: [Icons.animation, Icons.play_circle_fill],
   ),
 ];

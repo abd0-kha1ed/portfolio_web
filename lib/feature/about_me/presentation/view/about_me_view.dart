@@ -110,11 +110,14 @@ class AboutMeView extends StatelessWidget {
                 ],
               ),
 
-              // Profile picture
               CircleAvatar(
-                radius: 80,
-                backgroundColor: AppColors.accentBlue,
-                backgroundImage: AssetImage(Assets.imagesFacebook),
+                radius: 82,
+                backgroundColor: AppColors.accent,
+                child: CircleAvatar(
+                  radius: 80,
+                  backgroundColor: AppColors.accentBlue,
+                  child: Image.asset(Assets.imagesProfileNoBackground),
+                ),
               ),
 
               // Biography text

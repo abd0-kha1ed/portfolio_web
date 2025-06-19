@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
+import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/biography_text.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/connect_section.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/home_profile.dart';
@@ -24,7 +25,6 @@ class HomeBiographySection extends StatelessWidget {
                       Align(alignment: Alignment.center, child: HomeProfile()),
                       const SizedBox(height: 24),
 
-                      // النص
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.34,
                         child: const BiographyText(),
@@ -32,7 +32,6 @@ class HomeBiographySection extends StatelessWidget {
 
                       const SizedBox(height: 24),
 
-                      // let’s connect
                       const ConnectSection(),
                     ],
                   )
@@ -42,7 +41,11 @@ class HomeBiographySection extends StatelessWidget {
                       CircleAvatar(
                         radius: 48,
                         backgroundColor: AppColors.accent,
-                        child: CircleAvatar(radius: 45, child: FlutterLogo()),
+                        child: CircleAvatar(
+                          radius: 45,
+                          backgroundColor: AppColors.accentBlue,
+                          child: Image.asset(Assets.imagesProfileNoBackground),
+                        ),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.022,

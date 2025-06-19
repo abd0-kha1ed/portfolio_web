@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 
 class WhatIDoText extends StatelessWidget {
-  const WhatIDoText({
-    super.key,
-  });
+  const WhatIDoText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +26,22 @@ class WhatIDoText extends StatelessWidget {
               height: 1.6,
             ),
             children: [
-              TextSpan(
-                text:
-                    'Build and maintain applications using ',
-              ),
+              TextSpan(text: 'I build mobile and web applications using '),
               TextSpan(
                 text: 'Flutter',
                 style: TextStyle(color: AppColors.accent),
               ),
               TextSpan(
                 text:
-                    ', focusing on UI/UX and performance. Also mentoring at ',
+                    ', with a focus on UI/UX, responsiveness, and performance. I\'m currently learning more about ',
               ),
               TextSpan(
-                text: 'MOFON',
-                style: TextStyle(
-                  color: AppColors.blueDark,
-                ),
+                text: 'clean architecture',
+                style: TextStyle(color: AppColors.blueDark),
               ),
               TextSpan(
                 text:
-                    '. I value clean code, teamwork, and continuous learning.',
+                    ', state management, and API integration. I value clean code, collaboration, and continuous learning.',
               ),
             ],
           ),
