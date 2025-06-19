@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatelessWidget {
   final String imagePath;
   final String type;
   final String title;
   final String description;
+  final String url;
 
   const ProjectCard({
     super.key,
@@ -14,6 +16,7 @@ class ProjectCard extends StatelessWidget {
     required this.type,
     required this.title,
     required this.description,
+    required this.url,
   });
 
   @override
@@ -31,7 +34,9 @@ class ProjectCard extends StatelessWidget {
             top: 12,
             right: 12,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                launchUrl(Uri.parse(url));
+              },
               icon: Image.asset(Assets.imagesProjectArrow),
             ),
           ),

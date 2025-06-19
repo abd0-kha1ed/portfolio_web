@@ -77,6 +77,7 @@ class _HomeFeaturedProjectSectionState extends State<HomeFeaturedProjectSection>
                             type: project.type,
                             title: project.title,
                             description: project.description,
+                            url: project.url,
                           ),
                         )
                         .toList();

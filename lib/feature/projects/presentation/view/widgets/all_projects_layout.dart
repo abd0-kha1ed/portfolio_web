@@ -32,6 +32,7 @@ class AllProjectsLayout extends StatelessWidget {
                 type: project.type,
                 title: project.title,
                 description: project.description,
+                url: project.url,
               ),
             );
           },
