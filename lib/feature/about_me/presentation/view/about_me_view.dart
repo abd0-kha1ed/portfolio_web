@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
@@ -8,6 +9,7 @@ import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
 import 'package:portfolio_web/feature/about_me/presentation/view/widgets/experince_section.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutMeView extends StatelessWidget {
   const AboutMeView({super.key});
@@ -92,17 +94,27 @@ class AboutMeView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      Assets.imagesInsta,
-                      width: 32,
-                      height: 32,
+                    onPressed: () {
+                      launchUrl(
+                        Uri.parse(
+                          'https://www.facebook.com/abd.el.rhman.khaled.584963',
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      FontAwesomeIcons.facebook,
+                      size: 32,
+                      color: Colors.white,
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(
+                        Uri.parse('mailto:abdelrahmankhaleddev@gmail.com'),
+                      );
+                    },
                     icon: const Icon(
-                      Icons.email,
+                      FontAwesomeIcons.envelope,
                       size: 28,
                       color: Colors.white,
                     ),

@@ -11,7 +11,12 @@ class CustomFooter extends StatelessWidget {
     return Column(
       children: [
         const Divider(color: AppColors.normalText),
-        const SizedBox(height: 48),
+        const SizedBox(height: 16),
+        const Text(
+          "Designed & Developed with ❤️ by Abd El-Rhman",
+          style: TextStyle(color: Colors.grey, fontSize: 16),
+        ),
+        const SizedBox(height: 32),
         const SelectableText('Reach me out', style: AppTextStyles.semibold14),
         const SizedBox(height: 16),
         Row(
@@ -30,7 +35,9 @@ class CustomFooter extends StatelessWidget {
             const SizedBox(width: 16),
             IconButton(
               onPressed: () {
-                lunchCustomUrl('https://www.linkedin.com/in/abdelrahman-khaled-dev/');
+                lunchCustomUrl(
+                  'https://www.linkedin.com/in/abdelrahman-khaled-dev/',
+                );
               },
               icon: const Icon(
                 FontAwesomeIcons.linkedin,

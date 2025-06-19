@@ -71,7 +71,7 @@ class ProjectCard extends StatelessWidget {
                     fontSize: 14,
                     height: 1.5,
                   ),
-                  maxLines: 3,
+                  maxLines: 5,
                   // overflow: TextOverflow.ellipsis,
                 ),
               ],

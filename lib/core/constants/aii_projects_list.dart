@@ -5,11 +5,12 @@ const List<ProjectModel> allProjects = [
   ProjectModel(
     url: 'https://github.com/abd0-kha1ed/path_tracker',
     imagePath: Assets.imagesPathTracker,
-    type: 'Flutter App',
-    title: 'Task Manager',
+    type: 'Robot Controller',
+    title: 'Path Tracker',
     description:
-        'A productivity app built using Flutter that helps users manage their daily tasks with reminders and analytics.',
+        'A Flutter-based mobile app that controls a ground-tracking robot. It displays real-time data such as speed, obstacle distance, and robot status, and allows interactive control of movement and path tracking.',
   ),
+
   ProjectModel(
     url: 'https://github.com/abd0-kha1ed/attendance-system',
     imagePath: Assets.imagesLms,

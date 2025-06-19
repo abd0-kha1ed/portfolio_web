@@ -13,23 +13,31 @@ class ConnectionIcons extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SocialIcon(
-          icon: Image.asset(Assets.imagesInsta),
+          icon: Icon(
+            FontAwesomeIcons.linkedinIn,
+            size: 30,
+            color: Colors.white,
+          ),
           onPressed:
               () => lunchCustomUrl(
-                'https://www.instagram.com/abdelrhmankhaleddev?igsh=b2ZzMWhpNGR3OTFl',
+                'https://www.linkedin.com/in/abdelrahman-khaled-dev/',
               ),
         ),
         const SizedBox(width: 12),
         SocialIcon(
-          icon: Icon(FontAwesomeIcons.whatsapp, size: 30, color: Colors.white),
-          onPressed: () => openWhatsApp('+201007287335'),
+          icon: Icon(
+            FontAwesomeIcons.github,
+            size: 30,
+            color: Colors.white,
+          ),
+          onPressed: () => lunchCustomUrl('https://github.com/abd0-kha1ed'),
         ),
         const SizedBox(width: 12),
         SocialIcon(
-          icon: Image.asset(Assets.imagesFacebook),
+          icon: Icon(FontAwesomeIcons.envelope, size: 30, color: Colors.white),
           onPressed:
               () => lunchCustomUrl(
-                'https://www.facebook.com/abd.el.rhman.khaled.584963',
+                'mailto:abdelrahmankhaleddev@gmail.com',
               ),
         ),
       ],

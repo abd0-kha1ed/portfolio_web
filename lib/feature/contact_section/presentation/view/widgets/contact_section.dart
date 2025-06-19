@@ -7,7 +7,7 @@ import 'package:portfolio_web/core/helpers/functions/send_email_from_flutter_fun
 import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
-import 'package:portfolio_web/feature/contact_section/presentation/view/widgets/social_icon.dart';
+import 'package:portfolio_web/feature/home/presentation/view/widgets/home_profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatefulWidget {
@@ -34,6 +34,7 @@ class _ContactSectionState extends State<ContactSection> {
       GoRouter.of(context).push(AppRouter.kSnippets);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -85,6 +86,8 @@ class _ContactSectionState extends State<ContactSection> {
                 ),
             screenWidth < 800 ? const SizedBox() : const Divider(),
             const SizedBox(height: 60),
+            const HomeProfile(),
+            const SizedBox(height: 32),
             Text(
               "Contact Me",
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -117,10 +120,7 @@ class _ContactSectionState extends State<ContactSection> {
                     : Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: _buildContactInfo().animate().fadeIn(),
-                        ),
+                        _buildContactInfo().animate().fadeIn(),
                         const SizedBox(width: 48),
                         Expanded(
                           flex: 1,
@@ -131,14 +131,7 @@ class _ContactSectionState extends State<ContactSection> {
               },
             ),
 
-            const SizedBox(height: 60),
-
-            // Footer
-            const Text(
-              "Designed & Developed with ❤️ by Abd El-Rhman",
-              style: TextStyle(color: Colors.grey, fontSize: 12),
-            ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 60),            
             const CustomFooter(),
           ],
         ),
@@ -151,41 +144,56 @@ class _ContactSectionState extends State<ContactSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _contactRow(
-          Icons.email,
-          "abdelrahmankhaleddev@gmail.com",
-          "mailto:abdelrahmankhaleddev@gmail.com",
-          AppColors.accentLight,
+          FontAwesomeIcons.whatsapp,
+          "+201007287335",
+          "https://wa.me/+201007287335",
+          AppColors.white,
         ),
         const SizedBox(height: 16),
         _contactRow(
-          FontAwesomeIcons.whatsapp,
-          "WhatsApp me",
-          "https://wa.me/+201007287335",
-          AppColors.accentLight,
+          FontAwesomeIcons.envelope,
+          "abdelrahmankhaleddev@gmail.com",
+          "mailto:abdelrahmankhaleddev@gmail.com",
+          AppColors.white,
         ),
+        const SizedBox(height: 16),
+
+        _contactRow(
+          FontAwesomeIcons.github,
+          "GitHub",
+          "https://github.com/abd0-kha1ed",
+          AppColors.white,
+        ),
+        const SizedBox(height: 16),
+        _contactRow(
+          FontAwesomeIcons.linkedinIn,
+          "LinkedIn",
+          "https://www.linkedin.com/in/abdelrahman-khaled-dev",
+          AppColors.white,
+        ),
+        const SizedBox(height: 16),
+        _contactRow(
+          FontAwesomeIcons.facebook,
+          "Facebook",
+          "https://www.facebook.com/abd.el.rhman.khaled.584963",
+          AppColors.white,
+        ),
+        const SizedBox(height: 16),
+        _contactRow(
+          FontAwesomeIcons.instagram,
+          "Instagram",
+          "https://www.instagram.com/abdelrhmankhaleddev",
+          AppColors.white,
+        ),
+        const SizedBox(height: 16),
+        _contactRow(
+          FontAwesomeIcons.twitter,
+          "Twitter",
+          "https://x.com/abdelrahma42501",
+          AppColors.white,
+        ),
+
         const SizedBox(height: 32),
-        Wrap(
-          spacing: 24,
-          children: const [
-            SocialIcon(
-              icon: Icons.code,
-              label: "GitHub",
-              url: "https://github.com/abd0-kha1ed",
-            ),
-            SocialIcon(
-              icon: Icons.business,
-              label: "LinkedIn",
-              url:
-                  "https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BYYQieOSqTkySWOAXTWvr5w%3D%3D",
-            ),
-            SocialIcon(
-              icon: Icons.camera_alt,
-              label: "Instagram",
-              url:
-                  "https://www.instagram.com/abdelrhmankhaleddev?igsh=b2ZzMWhpNGR3OTFl",
-            ),
-          ],
-        ),
       ],
     );
   }
@@ -217,12 +225,12 @@ class _ContactSectionState extends State<ContactSection> {
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.accent,
               foregroundColor: Colors.black,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: const Text("Send"),
+            child: const Text("Send", style: TextStyle(fontSize: 16)),
           ),
         ],
       ),
@@ -263,7 +271,7 @@ class _ContactSectionState extends State<ContactSection> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: color),
+          Icon(icon, color: Colors.white.withValues(alpha: 0.5), size: 26),
           const SizedBox(width: 8),
           Text(
             label,
