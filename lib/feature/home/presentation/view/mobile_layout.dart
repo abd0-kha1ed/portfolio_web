@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/helpers/functions/show_more_options_nav_bar.dart';
 import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/widgets/mobile_bottom_nav.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/mobile_layout_body.dart';
@@ -14,8 +15,30 @@ class MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<MobileLayout> {
   final GlobalKey homeKey = GlobalKey();
   int currentIndex = 0;
+  late ScrollController _scrollController;
+  bool isNavBarVisible = true;
 
-  final ScrollController _scrollController = ScrollController();
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels > 100 && isNavBarVisible) {
+        setState(() {
+          isNavBarVisible = false;
+        });
+      } else if (_scrollController.position.pixels <= 100 && !isNavBarVisible) {
+        setState(() {
+          isNavBarVisible = true;
+        });
+      }
+    });
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   void scrollToSection(GlobalKey key) {
     Scrollable.ensureVisible(
@@ -25,49 +48,11 @@ class _MobileLayoutState extends State<MobileLayout> {
     );
   }
 
-  void showMoreOptions(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.black87,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.person, color: Colors.white),
-              title: const Text(
-                'About Me',
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {
-                GoRouter.of(context).pop(); 
-                GoRouter.of(context).push(AppRouter.kAbout);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.mail, color: Colors.white),
-              title: const Text(
-                'Contact',
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                GoRouter.of(context).push(AppRouter.kContact);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: MobileBottomNav(
+        isNavBarVisible: isNavBarVisible,
         currentIndex: currentIndex,
         onTap: (index) {
           if (index == currentIndex) {

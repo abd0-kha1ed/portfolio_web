@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/biography_text.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/connection_icons.dart';
 import 'package:portfolio_web/feature/home/presentation/view/widgets/gradiant_text.dart';
@@ -73,6 +74,7 @@ class MobileLayoutBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
+            const CustomFooter(),
           ],
         ),
       ),

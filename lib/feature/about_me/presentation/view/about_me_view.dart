@@ -4,22 +4,76 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio_web/core/constants/app-text_styles.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/constants/helper.dart';
+import 'package:portfolio_web/core/helpers/functions/show_more_options_nav_bar.dart';
 import 'package:portfolio_web/core/routing/app_router.dart';
 import 'package:portfolio_web/core/utils/assets.dart';
 import 'package:portfolio_web/core/widgets/custom_footer.dart';
 import 'package:portfolio_web/core/widgets/custom_header.dart';
+import 'package:portfolio_web/core/widgets/mobile_bottom_nav.dart';
 import 'package:portfolio_web/feature/about_me/presentation/view/widgets/experince_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutMeView extends StatelessWidget {
+class AboutMeView extends StatefulWidget {
   const AboutMeView({super.key});
+
+  @override
+  State<AboutMeView> createState() => _AboutMeViewState();
+}
+
+class _AboutMeViewState extends State<AboutMeView> {
+  int currentIndex = 3;
+  late ScrollController _scrollController;
+  bool isNavBarVisible = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels > 100 && isNavBarVisible) {
+        setState(() {
+          isNavBarVisible = false;
+        });
+      } else if (_scrollController.position.pixels <= 100 && !isNavBarVisible) {
+        setState(() {
+          isNavBarVisible = true;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      bottomNavigationBar: MobileBottomNav(
+        isNavBarVisible: isNavBarVisible,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          if (index == 0) {
+            GoRouter.of(context).push(AppRouter.kHome);
+          } else if (index == 1) {
+            GoRouter.of(context).push(AppRouter.kMobileProjects);
+          } else if (index == 2) {
+            GoRouter.of(context).push(AppRouter.kMobileSnippets);
+          } else if (index == 3) {
+            showMoreOptions(context);
+          } else {
+            setState(() {
+              currentIndex = index;
+            });
+          }
+        },
+      ),
       body: SingleChildScrollView(
+        controller: _scrollController,
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * horizontalPadding,
           vertical: 40,
