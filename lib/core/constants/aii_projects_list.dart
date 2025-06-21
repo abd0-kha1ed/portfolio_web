@@ -20,7 +20,7 @@ const List<ProjectModel> allProjects = [
         'A Flutter-based attendance system that allows teachers to manage student attendance efficiently.',
   ),
   ProjectModel(
-    url: 'https://github.com/abd0-kha1ed',
+    url: 'https://github.com/abd0-kha1ed/lms',
     imagePath: Assets.imagesAttendance,
     type: 'Flutter LMS',
     title: 'Learning Platform',
