@@ -175,7 +175,7 @@ class _ContactSectionState extends State<ContactSection> {
         _contactRow(
           FontAwesomeIcons.facebook,
           "Facebook",
-          "https://www.facebook.com/abd.el.rhman.khaled.584963",
+          "https://www.facebook.com/AbdelrhmanKhaledDev/",
           AppColors.white,
         ),
         const SizedBox(height: 16),
