@@ -1,17 +1,9 @@
-
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/core/constants/app_colors.dart';
 import 'package:portfolio_web/core/routing/app_router.dart';
 
 void main() {
-  runApp(
-    DevicePreview(
-      builder: (context) {
-        return PortfolioWebApp();
-      },
-    ),
-  );
+  runApp(PortfolioWebApp());
 }
 
 class PortfolioWebApp extends StatelessWidget {
@@ -21,8 +13,6 @@ class PortfolioWebApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Abdelrahman | Flutter Developer',
       debugShowCheckedModeBanner: false,
-      builder: DevicePreview.appBuilder,
-      locale: DevicePreview.locale(context),
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: AppColors.background,
       ),
