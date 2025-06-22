@@ -45,25 +45,28 @@ class _ContactViewState extends State<ContactView> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      bottomNavigationBar: MobileBottomNav(
-        isNavBarVisible: isNavBarVisible,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          if (index == 0) {
-            GoRouter.of(context).push(AppRouter.kHome);
-          } else if (index == 1) {
-            GoRouter.of(context).push(AppRouter.kMobileProjects);
-          } else if (index == 2) {
-            GoRouter.of(context).push(AppRouter.kMobileSnippets);
-          } else if (index == 3) {
-            showMoreOptions(context);
-          } else{
-            setState(() {
-              currentIndex = index;
-            });
-          }
-        },
-      ),
+      bottomNavigationBar:
+          screenWidth > 800
+              ? null
+              : MobileBottomNav(
+                isNavBarVisible: isNavBarVisible,
+                currentIndex: currentIndex,
+                onTap: (index) {
+                  if (index == 0) {
+                    GoRouter.of(context).push(AppRouter.kHome);
+                  } else if (index == 1) {
+                    GoRouter.of(context).push(AppRouter.kMobileProjects);
+                  } else if (index == 2) {
+                    GoRouter.of(context).push(AppRouter.kMobileSnippets);
+                  } else if (index == 3) {
+                    showMoreOptions(context);
+                  } else {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  }
+                },
+              ),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Padding(
